@@ -4,16 +4,17 @@ import ModuleList from '../ModuleList/ModuleList'
 import NewsModule from "../SingleModule/NewsModule"
 import SocialMediaModule from "../SingleModule/SocialMediaModule"
 import WeatherModule from "../SingleModule/WeatherModule"
-import CustomSingleModule from '../SingleModule/CustomSingleModule'
+import ToDoList from "../SingleModule/ToDoList"
 import { Route } from 'react-router-dom'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      News: [],
-      SocialMedia: [],
-      Weather: []
+      news: ["TEST NEWS"],
+      socialMedia: ["TEST SOCIAL MEDIA"],
+      weather: ["TEST WEATHER"],
+      toDo: ["TEST TO DO"],
     }
   }
   render () {
@@ -40,6 +41,11 @@ class App extends Component {
             path="/Weather/"
             exact
             render={props => <WeatherModule {...props} {...this.state.Weather} />}
+          />
+          <Route
+            path="/ToDo/"
+            exact
+            render={props => <ToDoList {...props} {...this.state.toDo} />}
           />
         </section>
       </div>
