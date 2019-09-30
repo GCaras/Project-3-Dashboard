@@ -4,9 +4,6 @@ class ModuleList extends Component {
     render() {
         return(
             <div>
-                <nav>
-                    <p>TEST</p>
-                </nav>
             </div>
         )
     }
