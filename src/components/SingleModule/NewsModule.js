@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
 class NewsModule extends Component {
+
     render() {
         return(
             <div>
-                <nav>
-                    <p>NewsModuleTEST</p>
-                </nav>
+                <h1>{this.props[0].headline}</h1>
             </div>
         )
     }
