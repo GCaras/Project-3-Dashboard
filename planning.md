@@ -1,17 +1,27 @@
-***YouDash***
+***YouDue***
 
-YouDash is a website in which a user will be able to create and interact with a personalized dashboard. The dashboad will incorporate various widgets while operating using full CRUD and API calls.
+Personalized to-do/to-watch/to-read/to-EVERYTHING!
 
 
 ***Models:***
 
-Dashboard Components
-- Name
-- URL
-- Image
+To-Do List
+- Task
+- Due Date
+- URL (Optional)
+- Image (Optional)
 
-Themes
+To-Read List
 - Name
-- Primary Color
-- Secondary Color
-- Tertiary Color
+- Medium
+- Due Date
+- URL (Optional)
+- Image (Optional)
+
+To-Watch
+- Name
+- Network
+- Due Date
+- URL (Optional)
+- Image (Optional)
+
