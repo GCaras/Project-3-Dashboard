@@ -1,3 +1,9 @@
 a {
+    color: black;
     text-decoration: none;
+}
+
+body {
+    background-color: gray;
+    margin: 0;
 }

@@ -6,20 +6,20 @@ Personalized to-do/to-watch/to-read/to-EVERYTHING!
 ***Models:***
 
 To-Do List
-- Task
+- TaskName
 - Due Date
 - URL (Optional)
 - Image (Optional)
 
 To-Read List
-- Name
+- TaskName
 - Medium
 - Due Date
 - URL (Optional)
 - Image (Optional)
 
 To-Watch
-- Name
+- TaskName
 - Network
 - Due Date
 - URL (Optional)

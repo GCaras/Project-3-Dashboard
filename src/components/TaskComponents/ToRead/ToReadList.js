@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
-class NewsModule extends Component {
-
+class ToReadList extends Component {
     render() {
         return(
             <div>
-                <h1>{this.props[0].headline}</h1>
+                <h1>TEST</h1>
             </div>
         )
     }
 }
 
-export default NewsModule
+export default ToReadList

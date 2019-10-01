@@ -1,57 +1,73 @@
 import React, { Component } from 'react'
-import Nav from '../Nav/Nav'
-import ModuleList from '../ModuleList/ModuleList'
-import NewsModule from "../SingleModule/NewsModule"
-import SocialMediaModule from "../SingleModule/SocialMediaModule"
-import WeatherModule from "../SingleModule/WeatherModule"
-import ToDoList from "../SingleModule/ToDoList"
-import { Route } from 'react-router-dom'
+import TasksList from '../TasksList/TasksList'
+import ToDoList from '../TaskComponents/ToDo/ToDoList'
+import ToWatchList from '../TaskComponents/ToWatch/ToWatchList'
+import ToReadList from '../TaskComponents/ToRead/ToReadList'
+import { Route, Link } from 'react-router-dom'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      news: [
+      toDo: [
         {
-          headline: "Intelligence panel has deal to hear whistleblower’s testimony",
-          url: "https://www.washingtonpost.com/politics/intelligence-panel-has-deal-to-hear-whistleblowers-testimony/2019/09/29/fc22d084-e2e0-11e9-a6e8-8759c5c7f608_story.html",
-          image: "https://www.washingtonpost.com/resizer/kUv5e4FfXnDM6KY4FwJwMsEEqoU=/1484x0/www.washingtonpost.com/rw/2010-2019/WashingtonPost/2019/09/30/Others/Images/2019-09-26/CaptiolHill033.JPG"
+          taskName: "Run",
+          dueDate: "10/5/2019",
+          url: "https://en.wikipedia.org/wiki/Running",
+          image: "https://www.pngix.com/pngfile/middle/298-2980365_run-icon-png-transparent-png.png"
+        },
+        {
+          taskName: "Walk",
+          dueDate: "10/4/2019",
+          url: "https://en.wikipedia.org/wiki/Walking",
+          image: "https://www.boisfranc.com/content/uploads/sites/36/2018/09/walk-png.png"
         }
       ],
-      socialMedia: ["TEST SOCIAL MEDIA"],
-      weather: ["TEST WEATHER"],
-      toDo: ["TEST TO DO"],
+      toWatch: [
+        {
+          taskName: "The Blacklist",
+          network: "Netflix",
+          dueDate: "10/5/1989",
+          url: "https://www.netflix.com/title/70281312",
+          image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/The_Blacklist_logo.svg"
+        },
+        {
+          taskName: "The Whitelist",
+          network: "Netflix",
+          dueDate: "10/5/1989",
+          url: "https://www.netflix.com/title/70281312",
+          image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/The_Blacklist_logo.svg"
+        }
+      ],
+      toRead: []
     }
   }
   render () {
     return (
       <div>
-        <Nav />
+        <Link to="/">
+          <h1>YouDue</h1>
+        </Link>
         <section>
           <Route 
             path="/"
             exact
-            render={props => <ModuleList {...props} {...this.state} />}
-          />
-          <Route
-            path="/News/"
-            exact
-            render={props => <NewsModule {...props} {...this.state.news} />}
-          />
-          <Route
-            path="/Twitter/"
-            exact
-            render={props => <SocialMediaModule {...props} {...this.state.SocialMedia} />}
-          />
-          <Route
-            path="/Weather/"
-            exact
-            render={props => <WeatherModule {...props} {...this.state.Weather} />}
+            render={props => <TasksList {...props} {...this.state} />}
           />
           <Route
             path="/ToDo/"
             exact
-            render={props => <ToDoList {...props} {...this.state.toDo} />}
+            render={props => <ToDoList {...props} {...this.state} />}
+          />
+          <Route
+            path="/ToWatch/"
+            exact
+            render={props => <ToWatchList {...props} {...this.state.toWatch} />}
+          />
+          <Route
+            path="/ToRead/"
+            exact
+            render={props => <ToReadList {...props} {...this.state.toRead} />}
           />
         </section>
       </div>
