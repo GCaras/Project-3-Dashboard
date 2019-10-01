@@ -15,6 +15,7 @@ export default class ToReadList extends Component {
         this.onChange=this.onChange.bind(this)
         this.onEnter=this.onEnter.bind(this)
         this.afterSearch = this.afterSearch.bind(this)
+        this.selectOne = this.selectOne.bind(this)
     
     }
     onChange(value, evt) {
@@ -26,6 +27,11 @@ export default class ToReadList extends Component {
         this.setState({
             searchResponse: res
         }) 
+    }
+
+    // Narrows search to one choice to add to the list
+    selectOne(choice){
+        console.log(choice)
     }
 
     onEnter(value, evt) {
@@ -54,7 +60,7 @@ export default class ToReadList extends Component {
 
     render() {
        const listOfBooks = this.state.searchResponse.map(el => {
-            return <ShowEachBook bookInfo={el}  />
+            return <ShowEachBook bookInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)} />
         })
         var date = new Date();
         return (

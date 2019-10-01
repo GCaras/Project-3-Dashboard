@@ -9,31 +9,34 @@ const bookStyles = {
     alignItems: "center",
     backgroundColor: "#eee",
 }
+// const book = this.props.bookInfo
+const ShowEachBook = ({ choice, bookInfo }) => (
 
-export default class ShowEachBook extends Component {
-    constructor(props) {
-        super(props)
-        this.addBook = this.addBook.bind(this)
-    }
-    addBook(info) {
-        const url = 'https://todolist-sei32.herokuapp.com/toread/'
-        fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(info)
-          })
-            .catch(err => console.log(err));
-    }
-    render() {
-        const book = this.props.bookInfo
-        return (
-            <div style={bookStyles} onClick={() => this.addBook(book)}>
-                {book.volumeInfo.title}
-                <img src={book.volumeInfo.imageLinks.thumbnail} />
-                {/* <p>{book.searchInfo.textSnippet}</p> */}
+    // addBook(info) {
+
+        // console.log(info)
+
+
+        // const url = 'https://todolist-sei32.herokuapp.com/toread/'
+        // fetch(url, {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify(info)
+        //   })
+        //     .catch(err => console.log(err));
+    // }
+    // render() {
+        
+        // return (
+            <div style={bookStyles} onClick={choice}>
+                {bookInfo.volumeInfo.title}
+                <img alt="book from a search" src={bookInfo.volumeInfo.imageLinks.thumbnail} />
+                {/* <p>{bookInfo.searchInfo.textSnippet}</p> */}
             </div>
         )
-    }
-}
+    // }
+// }
+
+export default ShowEachBook
