@@ -31,7 +31,9 @@ export default class ToReadList extends Component {
 
     // Narrows search to one choice to add to the list
     selectOne(choice){
-        console.log(choice)
+       this.setState({
+           searchResponse: [this.state.searchResponse.find((value) => value.volumeInfo.title === choice)]
+       }) 
     }
 
     onEnter(value, evt) {
