@@ -58,9 +58,11 @@ class App extends Component {
   render () {
     return (
       <div>
+        <nav className="navbar">
         <Link to="/">
-          <h1>YouDue</h1>
+          <h1 className="logo">YouDue</h1>
         </Link>
+        </nav>
         <section>
           <Route 
             path="/"
