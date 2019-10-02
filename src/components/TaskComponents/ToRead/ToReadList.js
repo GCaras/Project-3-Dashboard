@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import SearchField from "react-search-field";
 import ShowEachBook from './ShowEachBook';
+import styled from 'styled-components';
 let Datetime = require('react-datetime');
+
+
+const StyledHeader = styled.h1`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+ padding: 20px;
+  justify-content: space-around;
+  color: white;
+`
+
+const StyledSearch = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+ padding: 20px;
+  justify-content: space-around;
+`
 
 
 
@@ -62,20 +81,22 @@ export default class ToReadList extends Component {
 
     render() {
        const listOfBooks = this.state.searchResponse.map(el => {
-            return <ShowEachBook bookInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)} />
+            return <ShowEachBook bookInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)}  />
         })
         var date = new Date();
         return (
             <div>
-                <h1>Search For Your Book Title</h1>  
+                <StyledHeader>Search For Your Book Title</StyledHeader>  
                 <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
-  
+               
+  <StyledSearch>
                 <SearchField 
                 placeholder="Search"
                 onChange={(value, evt) => this.onChange(value, evt)}
                 onEnter={(value, evt) => this.onEnter(value, evt)}
                 />
                 {listOfBooks}
+                </StyledSearch>
             </div>
         )
     }
