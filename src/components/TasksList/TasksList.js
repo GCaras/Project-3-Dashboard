@@ -15,7 +15,7 @@ const StyledModuleListItem = styled.article`
     border-radius: 25px;
     box-shadow: 5px 5px 5px darkslategray;
     color: white;
-    height: 275px;
+    height: 100%;
     margin: 5px;
     padding: 5px;
     width: 275px;
@@ -27,7 +27,7 @@ const StyledTaskListHeader = styled.h1`
 `
 
 
-class ModuleList extends Component {
+class TaskList extends Component {
     render() {
         const ToDoTaskList = this.props.toDo.map((doTask, i) =>(
             <li key={i}>{doTask.dueDate} - {doTask.taskName}</li>
@@ -72,4 +72,4 @@ class ModuleList extends Component {
     }
 }
 
-export default ModuleList
+export default TaskList

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import TasksList from '../TasksList/TasksList'
-import ToDoList from '../TaskComponents/ToDo/ToDoList'
-import ToDoTask from '../TaskComponents/ToDo/ToDoTask'
-import ToWatchList from '../TaskComponents/ToWatch/ToWatchList'
-import ToReadList from '../TaskComponents/ToRead/ToReadList'
+import TaskList from '../TasksList/TasksList'
+import NewTaskList from '../NewTask/NewTaskMenu'
+import NewDoTask from '../TaskComponents/ToDo/NewDoTask'
+import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
+import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 
@@ -59,32 +59,39 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar">
-        <Link to="/">
-          <h1 className="logo">YouDue <span role="img">	&#x270F;&#xFE0F; </span>  </h1>
+          <Link to="/">
+            <h1 className="logo">YouDue<span role="img">	&#x270F;&#xFE0F; </span></h1>
+          </Link>
+          <Link to="/NewTask/">
+            <h4>Create New Task</h4>
+          </Link>
           <h2 className="motto"> Getting things done, when you want.</h2>
-        </Link>
-      
         </nav>
         <section>
           <Route 
             path="/"
             exact
-            render={props => <TasksList {...props} {...this.state} />}
+            render={props => <TaskList {...props} {...this.state} />}
           />
           <Route
-            path="/ToDo/"
+            path="/NewToDo/"
             exact
-            render={props => <ToDoList {...props} {...this.state} />}
+            render={props => <NewDoTask {...props} {...this.state} />}
           />
           <Route
-            path="/ToWatch/"
+            path="/NewToWatch/"
             exact
-            render={props => <ToWatchList {...props} {...this.state} />}
+            render={props => <NewWatchTask {...props} {...this.state} />}
           />
           <Route
-            path="/ToRead/"
+            path="/NewToRead/"
             exact
-            render={props => <ToReadList {...props} {...this.state} />}
+            render={props => <NewReadTask {...props} {...this.state} />}
+          />
+          <Route
+            path="/NewTask/"
+            exact
+            render={props => <NewTaskList {...props} {...this.state} />}
           />
           {/* <Route
             path="/ToDo/:task"
