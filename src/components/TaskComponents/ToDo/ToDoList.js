@@ -13,8 +13,8 @@ class ToDoList extends Component {
             <Link to={`/ToDo/${doTask.taskName}`} key={i}>
                 <section>
                     <StyledToDoImage src={doTask.image} alt={doTask.taskName} />
-                    <h2>{doTask.taskName}</h2>
-                    <li>{doTask.dueDate}</li>
+                    <h2>{doTask.task}</h2>
+                    <li>{doTask.due}</li>
                     <li>{doTask.url}</li>
                 </section>
             </Link>
