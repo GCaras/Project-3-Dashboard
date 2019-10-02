@@ -60,8 +60,10 @@ class App extends Component {
       <div>
         <nav className="navbar">
         <Link to="/">
-          <h1 className="logo">YouDue</h1>
+          <h1 className="logo">YouDue <span role="img">	&#x270F;&#xFE0F; </span>  </h1>
+          <h2 className="motto"> Getting things done, when you want.</h2>
         </Link>
+      
         </nav>
         <section>
           <Route 
