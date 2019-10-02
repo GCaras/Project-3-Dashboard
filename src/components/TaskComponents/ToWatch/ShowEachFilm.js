@@ -16,9 +16,9 @@ const filmThumbnail = {
 }
 
 const ShowEachFilm = ({ choice, filmInfo }) => (
-            <div style={filmStyles} onClick={choice}>
+            <div style={filmStyles} >
                 <h2>{filmInfo.Title}</h2>
-                <img src={filmInfo.Poster} style={filmThumbnail} />
+                <img src={filmInfo.Poster} style={filmThumbnail} onClick={choice}/>
                 {/* {bookInfo.volumeInfo.title} */}
                 {/* <img alt="book from a search" src={bookInfo.volumeInfo.imageLinks.thumbnail} /> */}
                 {/* <p>{bookInfo.searchInfo.textSnippet}</p> */}

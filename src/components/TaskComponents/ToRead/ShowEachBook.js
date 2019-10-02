@@ -11,9 +11,9 @@ const bookStyles = {
 }
 
 const ShowEachBook = ({ choice, bookInfo }) => (
-            <div style={bookStyles} onClick={choice}>
+            <div style={bookStyles}>
                 {bookInfo.volumeInfo.title}
-                <img alt="book from a search" src={bookInfo.volumeInfo.imageLinks.thumbnail} />
+                <img alt="book from a search" src={bookInfo.volumeInfo.imageLinks.thumbnail} onClick={choice} />
                 {/* <p>{bookInfo.searchInfo.textSnippet}</p> */}
             </div>
         )
