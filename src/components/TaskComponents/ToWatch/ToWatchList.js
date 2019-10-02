@@ -1,30 +1,81 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import SearchField from "react-search-field";
+import ShowEachFilm from './ShowEachFilm';
+let Datetime = require('react-datetime');
 
-const StyledToWatchImage = styled.img`
-    height: auto;
-    width: 200px;
-`
 
-class ToWatchList extends Component {
+
+export default class ToWatchList extends Component {
+    constructor(props) {
+        super(props)
+        this.state={
+            searchText: null,
+            searchResponse: []
+        }
+        this.onChange=this.onChange.bind(this)
+        this.onEnter=this.onEnter.bind(this)
+        this.afterSearch = this.afterSearch.bind(this)
+        this.selectOne = this.selectOne.bind(this)
+    
+    }
+    onChange(value, evt) {
+        this.setState({
+            searchText: value
+        })
+    }
+    afterSearch(res) {
+        this.setState({
+            searchResponse: res
+        }) 
+    }
+
+    // Narrows search to one choice to add to the list
+    selectOne(choice){
+       this.setState({
+           searchResponse: [this.state.searchResponse.find((value) => value.volumeInfo.title === choice)]
+       }) 
+    }
+
+    onEnter(value, evt) {
+        
+        const APIkey = '?apikey=cd212def&s='
+        const movieURL = "http://www.omdbapi.com/";
+        const url = `${movieURL}${APIkey}${this.state.searchText}`;
+       
+        fetch(url)
+        .then(res => res.json())
+        .then(res => this.afterSearch(res.Search))
+        .then(res => console.log(this.state.searchResponse))
+        // .then(response => {
+        //     let resArray = []
+        //     for(let i = 0; i < 10; i++){
+        //         resArray.push(response.Search[i])
+        //     }
+        //     this.afterSearch(resArray)
+
+        // })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+
     render() {
-        const ToWatchTaskList = this.props.toWatch.map((watchTask, i) =>(
-            <Link to={`/ToWatch/${watchTask.taskName}`} key={i}>
-                <section>
-                    <StyledToWatchImage src={watchTask.image} alt={watchTask.taskName} />
-                    <h2>{watchTask.taskName}</h2>
-                    <li>{watchTask.dueDate}</li>
-                    <li>{watchTask.url}</li>
-                </section>
-            </Link>
-        ));
-        return(
+       const listOfFilms = this.state.searchResponse.map(el => {
+            return <ShowEachFilm filmInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)} />
+        })
+        var date = new Date();
+        return (
             <div>
-                <article>{ToWatchTaskList}</article>
+                <h1>Search For A Movie Title</h1>  
+                <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
+  
+                <SearchField 
+                placeholder="Search"
+                onChange={(value, evt) => this.onChange(value, evt)}
+                onEnter={(value, evt) => this.onEnter(value, evt)}
+                />
+                {listOfFilms}
             </div>
         )
     }
 }
-
-export default ToWatchList
