@@ -15,7 +15,7 @@ const StyledModuleListItem = styled.article`
     border-radius: 25px;
     box-shadow: 5px 5px 5px darkslategray;
     color: white;
-    height: 275px;
+    height: 100%;
     margin: 5px;
     padding: 5px;
     width: 275px;
@@ -25,19 +25,50 @@ const StyledTaskListHeader = styled.h1`
     font-size: 30px;
     text-align: center;
 `
+var indexArray = [];
 
+console.log(indexArray)
 
-class ModuleList extends Component {
+class TaskList extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            data: []
+        }
+        this.ToDoTaskList = this.ToDoTaskList.bind(this)
+        this.ToWatchTaskList = this.ToWatchTaskList.bind(this)
+        this.ToReadTaskList = this.ToReadTaskList.bind(this)
+    }
+
+    componentDidMount() {
+        this.ToDoTaskList();
+        this.ToWatchTaskList();
+        this.ToReadTaskList();
+    }
+
+    ToDoTaskList() {this.props.toDo.map((doTask) =>(
+        indexArray.push(doTask)
+        ))
+    }
+
+    ToWatchTaskList() {
+        this.props.toWatch.map((watchTask) =>(
+        indexArray.push(watchTask)
+        ))
+    }
+
+    ToReadTaskList() {
+        this.props.toRead.map((readTask) =>(
+        indexArray.push(readTask)
+        ))
+    }
+
     render() {
-        const ToDoTaskList = this.props.toDo.map((doTask, i) =>(
-            <li key={i}>{doTask.dueDate} - {doTask.taskName}</li>
-        ));
-        const ToWatchTaskList = this.props.toWatch.map((watchTask, i) =>(
-            <li key={i}>{watchTask.dueDate} - {watchTask.taskName}</li>
-        ));
-        const ToReadTaskList = this.props.toRead.map((readTask, i) =>(
-            <li key={i}>{readTask.dueDate} - {readTask.taskName}</li>
-        ));
+        const TaskList = indexArray.map((task, i) => (
+            <Link to={`/todo/${task.task}`} key={i}>
+                <li>{task}</li>
+            </Link>
+        ))
         return(
             <div>
                 <StyledModuleList>
@@ -45,31 +76,14 @@ class ModuleList extends Component {
                         <Link to="/ToDo/">
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
-                                <ul>{ToDoTaskList}</ul>
-                            </section>
-                        </Link>
-                    </StyledModuleListItem>
-                    <StyledModuleListItem>
-                        <Link to="/ToWatch/">
-                        <StyledTaskListHeader>{"To-Watch List"}</StyledTaskListHeader>
-                            <section>
-                                <ul>{ToWatchTaskList}</ul>
-                            </section>
-                        </Link>
-                    </StyledModuleListItem>
-                    <StyledModuleListItem>
-                        <Link to="/ToRead/">
-                            <StyledTaskListHeader>{"To-Read List"}</StyledTaskListHeader>
-                            <section>
-                                <ul>{ToReadTaskList}</ul>
+                                <ul>{TaskList}</ul>
                             </section>
                         </Link>
                     </StyledModuleListItem>
                 </StyledModuleList>
-                
             </div>
         )
     }
 }
 
-export default ModuleList
+export default TaskList

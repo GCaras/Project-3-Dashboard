@@ -24,7 +24,7 @@ const StyledSearch = styled.div`
 
 
 
-export default class ToReadList extends Component {
+export default class NewReadTask extends Component {
     constructor(props) {
         super(props)
         this.state={
