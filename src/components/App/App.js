@@ -5,6 +5,7 @@ import ToDoTask from '../TaskComponents/ToDo/ToDoTask'
 import ToWatchList from '../TaskComponents/ToWatch/ToWatchList'
 import ToReadList from '../TaskComponents/ToRead/ToReadList'
 import { Route, Link } from 'react-router-dom'
+import './App.css'
 
 const taskURL = "https://todolist-sei32.herokuapp.com/";
 
