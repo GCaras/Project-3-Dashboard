@@ -66,6 +66,7 @@ export default class ToWatchList extends Component {
                 onEnter={(value, evt) => this.onEnter(value, evt)}
                 />
                 {listOfFilms}
+                <button onClick={() => console.log("working")}>Submit</button>
             </div>
         )
     }
