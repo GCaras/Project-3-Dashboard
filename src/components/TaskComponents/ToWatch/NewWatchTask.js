@@ -56,7 +56,7 @@ export default class ToWatchList extends Component {
         })
         var date = new Date();
         return (
-            <div>
+            <div style={newTaskStyles}>
                 <h1>Search For A Movie Title</h1>  
                 <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
   
@@ -66,8 +66,24 @@ export default class ToWatchList extends Component {
                 onEnter={(value, evt) => this.onEnter(value, evt)}
                 />
                 {listOfFilms}
-                <button onClick={() => console.log("working")}>Submit</button>
+                <button style={buttonStyles} onClick={() => console.log("working")}>Submit</button>
             </div>
         )
     }
+}
+
+const buttonStyles = {
+    height: "50px",
+    width: "200px",
+    margin: "30px"
+}
+
+const newTaskStyles = {
+    margin: "0 auto",
+    height: "auto",
+    width: "90%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignItems: "center",
 }

@@ -85,11 +85,11 @@ export default class NewReadTask extends Component {
         })
         var date = new Date();
         return (
-            <div>
+            <div style={newTaskStyles}>
                 <StyledHeader>Search For Your Book Title</StyledHeader>  
                 <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
                
-  <StyledSearch>
+                <StyledSearch>
                 <SearchField 
                 placeholder="Search"
                 onChange={(value, evt) => this.onChange(value, evt)}
@@ -97,7 +97,24 @@ export default class NewReadTask extends Component {
                 />
                 {listOfBooks}
                 </StyledSearch>
+                <button style={buttonStyles} onClick={() => console.log("working")}>Submit</button>
             </div>
         )
     }
+}
+
+const buttonStyles = {
+    height: "50px",
+    width: "200px",
+    margin: "30px"
+}
+
+const newTaskStyles = {
+    margin: "0 auto",
+    height: "auto",
+    width: "90%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignItems: "center",
 }
