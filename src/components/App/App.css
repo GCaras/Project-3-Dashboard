@@ -1,7 +1,23 @@
+.navbar{
+  background-color: rgba(0,0,0,0.5);
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.logo{
+  color: white;
+  font-family: 'Righteous', cursive;
+font-size: 30px;
+}
+
+
 /* Styles for the search field */
 
 div .react-search-field {
-    background-color: aquamarine;
+    background-color: #506680 ;
     width: 40vw;
     margin: 10px;
 }
@@ -14,18 +30,20 @@ div .react-search-field-input {
 /* Styles for the date picker below */
 
 .rdt {
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   }
   .rdtPicker {
     display: none;
     position: absolute;
     width: 250px;
     padding: 4px;
-    margin-top: 1px;
+    margin-top: 275px;
     z-index: 99999 !important;
-    background: #fff;
+    background: #506680;
     box-shadow: 0 1px 3px rgba(0,0,0,.1);
-    border: 1px solid #f9f9f9;
+    border: 2px solid black;
   }
   .rdtOpen .rdtPicker {
     display: block;

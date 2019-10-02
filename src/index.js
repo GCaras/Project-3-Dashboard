@@ -7,6 +7,10 @@ import { BrowserRouter as Router} from 'react-router-dom'
 
 ReactDOM.render(
         <Router>
+            <style>
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+</style>
+
             <App/>
         </Router>, 
     document.getElementById('root')

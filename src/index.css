@@ -4,6 +4,8 @@ a {
 }
 
 body {
-    background-color: gray;
+    background-color: #506680;
     margin: 0;
+    font-family: 'Righteous', cursive;
+    height: 100vh;
 }
