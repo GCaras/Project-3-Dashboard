@@ -32,7 +32,7 @@ export default class ToWatchList extends Component {
     // Narrows search to one choice to add to the list
     selectOne(choice){
        this.setState({
-           searchResponse: [this.state.searchResponse.find((value) => value.volumeInfo.title === choice)]
+           searchResponse: [this.state.searchResponse.find((value) => value.Title === choice)]
        }) 
     }
 
@@ -45,15 +45,6 @@ export default class ToWatchList extends Component {
         fetch(url)
         .then(res => res.json())
         .then(res => this.afterSearch(res.Search))
-        .then(res => console.log(this.state.searchResponse))
-        // .then(response => {
-        //     let resArray = []
-        //     for(let i = 0; i < 10; i++){
-        //         resArray.push(response.Search[i])
-        //     }
-        //     this.afterSearch(resArray)
-
-        // })
         .catch(err => {
           console.error(err);
         });
