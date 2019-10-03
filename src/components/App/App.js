@@ -31,7 +31,7 @@ class App extends Component {
   onDateChange(evt){
     let dateBuf = new Date(evt._d)
     dateBuf = JSON.stringify(dateBuf)
-    dateBuf = dateBuf.slice(0,11).concat("\"")
+    dateBuf = dateBuf.slice(1,11)
     console.log(dateBuf)
     
     this.setState({
@@ -44,10 +44,9 @@ class App extends Component {
   }
 
   fetchTasks() {
-    fetch(taskURL+"index", {
+    fetch(taskURL+"index/"+this.state.dateAndTime, {
       // Must shorten by 10 characters
-      method: "POST",
-      body: this.state.dateAndTime
+      method: "GET",
     })
       .then( response => response.json()
       .then( (parsedJson) => {
