@@ -79,7 +79,7 @@ export default class ToWatchList extends Component {
 
     submitAction() {
         this.buildObject()
-        fetch("http://localhost:8081/towatch/", {
+        fetch("https://todolist-sei32.herokuapp.com/towatch/", {
             method: "POST",
             mode: 'cors',
             body: JSON.stringify(newObjPost),

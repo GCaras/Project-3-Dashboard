@@ -104,7 +104,7 @@ export default class NewReadTask extends Component {
 
     submitAction() {
         this.buildObject()
-        fetch("http://localhost:8081/toread/", {
+        fetch("https://todolist-sei32.herokuapp.com/toread/", {
             method: "POST",
             mode: 'cors',
             body: JSON.stringify(newObjPost),
