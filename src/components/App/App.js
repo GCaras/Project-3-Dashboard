@@ -43,6 +43,9 @@ class App extends Component {
     // fetchTasks() {
     fetch(taskURL+"index/"+this.state.dateAndTime, {
       method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
       .then( response => response.json()
       .then( (parsedJson) => {

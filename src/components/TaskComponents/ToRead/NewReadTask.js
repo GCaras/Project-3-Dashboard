@@ -112,7 +112,7 @@ export default class NewReadTask extends Component {
                 'Content-Type': 'application/json',
                 "Connection": "keep-alive",
                 "Cache-Control": "no-cache",
-                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*",
                 "Host": "https://todolist-sei32.herokuapp.com/"
             },
             
