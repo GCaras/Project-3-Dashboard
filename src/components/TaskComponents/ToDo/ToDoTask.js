@@ -9,8 +9,6 @@ const StyledToDoImage = styled.img`
 
 const taskURL = "https://todolist-sei32.herokuapp.com";
 
-
-
 class ToDoTask extends Component {
     constructor(props){
         super(props)

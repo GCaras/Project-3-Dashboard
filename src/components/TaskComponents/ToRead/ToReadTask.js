@@ -7,23 +7,39 @@ const StyledToDoImage = styled.img`
     width: 200px;
 `
 
-const taskURL = "https://todolist-sei32.herokuapp.com";
-
-
+const taskUrl = "https://todolist-sei32.herokuapp.com";
 
 class ToWatchTask extends Component {
     constructor(props){
         super(props)
         this.state = {
-          doTask: {},
-          doURL: this.props.match.url
+          readTask: {},
+          readUrl: this.props.match.url
         }
         this.deleteDoTask = this.deleteDoTask.bind(this)
+        this.fetchReadTask = this.fetchReadTask.bind(this)
         console.log(this.props.match)
     }
 
+    componentDidMount() {
+        this.fetchReadTask();
+      }
+
+    fetchReadTask() {
+        fetch(taskUrl + this.state.readUrl, {
+            method: "GET",
+        })
+        .then( response => response.json()
+        .then( (parsedJson) => {
+          this.setState({
+            readTask: parsedJson
+          })
+        }
+        ))
+    }
+
     deleteDoTask() {
-        fetch(taskURL + this.state.doURL, {
+        fetch(taskUrl + this.state.readUrl, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -35,15 +51,15 @@ class ToWatchTask extends Component {
         .catch(err => console.log(err));
     };
     render() {
-        const toDoTask = this.state.doTask;
+        const toReadTask = this.state.readTask;
+        console.log(this.state.readTask)
         return (
             <div>
                 <article>
-                    <StyledToDoImage src={toDoTask.image} alt={toDoTask.task}/>
+                    <StyledToDoImage src={toReadTask.thumbnail} alt={toReadTask.title}/>
                     <section>
-                        <h2>{toDoTask.task}</h2>
-                        <li>{toDoTask.due}</li>
-                        <li>{toDoTask.url}</li>
+                        <h2>{toReadTask.title}</h2>
+                        <li>{toReadTask.due}</li>
                     </section>
                     <section>
                         <button>Edit Task</button>
