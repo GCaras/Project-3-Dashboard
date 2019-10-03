@@ -30,9 +30,10 @@ const StyledTaskListHeader = styled.h1`
 class TaskList extends Component {
 
     render() {
-        const TaskList = this.props.tasks.map((task, i) => (
+        const TaskListItems = this.props.tasks.map((task, i) => (
             <Link to={`${task.type}/id/${task._id}`} key={i}>
-                <li>{task}</li>
+                <img alt={i} src={task[0][0].Poster} />
+                <li>{task[0][0].Title}</li>
             </Link>
         ))
         return(
@@ -41,7 +42,7 @@ class TaskList extends Component {
                     <StyledModuleListItem>
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
-                                <ul>{TaskList}</ul>
+                                <ul>{TaskListItems}</ul>
                             </section>
                     </StyledModuleListItem>
                 </StyledModuleList>

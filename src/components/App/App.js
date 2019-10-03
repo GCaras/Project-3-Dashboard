@@ -14,8 +14,8 @@ import './App.css'
 let Datetime = require('react-datetime')
 
 
-// const taskURL = "https://todolist-sei32.herokuapp.com/";
-const taskURL = "http://localhost:8081/";
+const taskURL = "https://todolist-sei32.herokuapp.com/";
+// const taskURL = "http://localhost:8081/";
 
 
 class App extends Component {
@@ -36,17 +36,13 @@ class App extends Component {
     this.setState({
         dateAndTime: dateBuf
     })
-  }
-
-
-  componentDidUpdate(){
-    // fetchTasks() {
+      
     fetch(taskURL+"index/"+this.state.dateAndTime, {
       method: "GET",
     })
       .then( response => response.json()
       .then( (parsedJson) => {
-        console.log(parsedJson)
+        this.setState({ tasks: parsedJson })
       }))
   }
 
