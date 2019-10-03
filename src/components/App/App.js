@@ -59,8 +59,8 @@ class App extends Component {
 
   render () {
     return (
-      <div>
-        <nav className="navbar">
+      <div  className="navbar">
+        <nav>
         <Datetime className="dateTime" dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
           <Link to="/">
             <h1 className="logo">YouDue<span role="img">	&#x270F;&#xFE0F; </span></h1>
