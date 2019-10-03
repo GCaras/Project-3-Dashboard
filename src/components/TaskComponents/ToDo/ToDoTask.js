@@ -7,41 +7,29 @@ const StyledToDoImage = styled.img`
     width: 200px;
 `
 
-const taskURL = "https://todolist-sei32.herokuapp.com/todo/id/5d939f2913d757001761ff39";
+const taskURL = "https://todolist-sei32.herokuapp.com";
+
+
 
 class ToDoTask extends Component {
     constructor(props){
         super(props)
         this.state = {
-          doTask: {}
+          doTask: {},
+          doURL: this.props.match.url
         }
         this.deleteDoTask = this.deleteDoTask.bind(this)
-        this.fetchDoTask = this.fetchDoTask.bind(this)
-    }
-
-    componentDidMount() {
-        this.fetchDoTask()
-    }
-    
-    fetchDoTask() {
-        fetch(taskURL + this.props.match.params.id)
-          .then( response => response.json()
-          .then( (parsedJson) => {
-            this.setState({
-              doTask: parsedJson
-            })
-        }))
+        console.log(this.props.match)
     }
 
     deleteDoTask() {
-        fetch(taskURL, {
+        fetch(taskURL + this.state.doURL, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "Connection": "keep-alive",
                 "Cache-Control": "no-cache",
-                "Accept": "*/*",
-                "Host": "https://todolist-sei32.herokuapp.com/"
+                "Accept": "*/*"
             },
         }).then(res => console.log(res))
         .catch(err => console.log(err));
