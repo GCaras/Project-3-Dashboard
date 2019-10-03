@@ -7,7 +7,7 @@ const StyledToDoImage = styled.img`
     width: 200px;
 `
 
-const taskURL = "https://todolist-sei32.herokuapp.com/";
+const taskURL = "https://todolist-sei32.herokuapp.com/todo/id/5d939f2913d757001761ff39";
 
 class ToDoTask extends Component {
     constructor(props){
@@ -24,7 +24,7 @@ class ToDoTask extends Component {
     }
     
     fetchDoTask() {
-        fetch(taskURL + this.props.match.params.task)
+        fetch(taskURL + this.props.match.params.id)
           .then( response => response.json()
           .then( (parsedJson) => {
             this.setState({
@@ -34,18 +34,17 @@ class ToDoTask extends Component {
     }
 
     deleteDoTask() {
-        fetch(taskURL + this.props.match.params.taskName, {
+        fetch(taskURL, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "Connection": "keep-alive",
                 "Cache-Control": "no-cache",
                 "Accept": "*/*",
-                "Host": "kanto-unown-01999.herokuapp.com"
+                "Host": "https://todolist-sei32.herokuapp.com/"
             },
         }).then(res => console.log(res))
         .catch(err => console.log(err));
-        this.props.fetchDoTask()
     };
     render() {
         const toDoTask = this.state.doTask;

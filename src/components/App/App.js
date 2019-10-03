@@ -15,44 +15,20 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      toDo: [],
-      toWatch: [],
-      toRead: []
+      tasks: []
     }
   }
 
   componentDidMount() {
-    this.fetchToDo();
-    this.fetchToWatch();
-    this.fetchToRead();
+    this.fetchTasks();
   }
 
-  fetchToDo() {
-    fetch(taskURL+"todo/")
+  fetchTasks() {
+    fetch(taskURL+"index")
       .then( response => response.json()
       .then( (parsedJson) => {
         this.setState({
-          toDo: parsedJson
-        })
-      }))
-  }
-
-  fetchToWatch() {
-    fetch(taskURL+"towatch/")
-      .then( response => response.json()
-      .then( (parsedJson) => {
-        this.setState({
-          toWatch: parsedJson
-        })
-      }))
-  }
-
-  fetchToRead() {
-    fetch(taskURL+"toread/")
-      .then( response => response.json()
-      .then( (parsedJson) => {
-        this.setState({
-          toRead: parsedJson
+          tasks: parsedJson
         })
       }))
   }
