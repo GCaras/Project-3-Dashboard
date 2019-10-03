@@ -4,11 +4,12 @@
     border-radius: 25px;
     box-shadow: 5px 5px 5px yellow;
     color: white;
-    height: 100%;
     margin: 20px;
     margin-top: 125px;
-    padding: 50px;
     width: 275px;
+    margin-left: 410px;
+    padding: 50px;
+    position: absolute;
 }
 
 .boxImage2{
@@ -17,11 +18,12 @@
     border-radius: 25px;
     box-shadow: 5px 5px 5px yellow;
     color: white;
-    height: 100%;
     margin: 20px;
-    margin-top: 125px;
-    padding: 50px;
+    margin-top: 425px;
     width: 275px;
+    margin-left: 410px;
+    padding: 50px;
+    position: absolute;
 }
 
 
@@ -31,9 +33,10 @@
     border-radius: 25px;
     box-shadow: 5px 5px 5px yellow;
     color: white;
-    height: 100%;
     margin: 20px;
-    margin-top: 125px;
-    padding: 50px;
+    margin-top: 725px;
     width: 275px;
+    margin-left: 410px;
+    padding: 50px;
+    position: absolute;
 }

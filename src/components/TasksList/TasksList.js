@@ -18,7 +18,7 @@ const StyledModuleListItem = styled.article`
     margin: 20px;
     margin-top: 125px;
     width: 275px;
-    margin-left: 250px;
+    margin-left: 450px;
     padding: 50px;
     position: absolute;
 `
