@@ -5,7 +5,7 @@ import NewDoTask from '../TaskComponents/ToDo/NewDoTask'
 import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
 import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
 import ToDoList from '../TaskComponents/ToDo/ToDoList'
-import DoTask from "../TaskComponents/ToDo/ToDoTask"
+import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 
@@ -79,7 +79,7 @@ class App extends Component {
           <Route
             path="/ToDo/:task"
             exact
-            render={props => <DoTask {...props} {...this.state} />}
+            render={props => <ToDoTask {...props} {...this.state} />}
           />
         </section>
       </div>
