@@ -25,27 +25,11 @@ const StyledTaskListHeader = styled.h1`
     font-size: 30px;
     text-align: center;
 `
-var indexArray = [];
-
-console.log(indexArray)
 
 class TaskList extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data: this.props
-        }
-    }
-
-    // componentDidMount() {
-    //     this.ToDoTaskList();
-    //     this.ToWatchTaskList();
-    //     this.ToReadTaskList();
-    // }
-
 
     render() {
-        const TaskList = indexArray.map((task, i) => (
+        const TaskList = this.props.tasks.map((task, i) => (
             <Link to={`/todo/${task.task}`} key={i}>
                 <li>{task}</li>
             </Link>
@@ -54,7 +38,7 @@ class TaskList extends Component {
             <div>
                 <StyledModuleList>
                     <StyledModuleListItem>
-                        <Link to="/ToDo/">
+                        <Link to="/ToWatch/">
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
                                 <ul>{TaskList}</ul>

@@ -11,7 +11,7 @@ class ToDoList extends Component {
     render() {
         const tasks = this.props.tasks;
         const taskList = tasks.map((task, i) =>(
-            <Link to={`${task._id}`} key={i}>
+            <Link to={`id/${task._id}`} key={i}>
                 <section>
                     <StyledToDoImage src={task.image} alt={task.taskName} />
                     <h2>{task.task}</h2>

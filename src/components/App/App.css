@@ -10,6 +10,22 @@ body {
   padding: 10px;
   justify-content: space-around;
 }
+.motto{
+  color: white;
+  position: absolute;
+  margin-left: 500px;
+  margin-top: -1.6px;
+}
+.createTask {
+  padding: 10px;
+  background-color: yellow;
+  width: 100px;
+  border: 3px solid black;
+  text-align: center;
+  position: absolute;
+  margin-left: 1200px;
+  margin-top: -73px;
+}
 
 .logo{
   color: white;
