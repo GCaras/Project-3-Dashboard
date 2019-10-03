@@ -1,12 +1,13 @@
 
 import React, { Component } from 'react'
 import TaskList from '../TasksList/TasksList'
-import NewTaskList from '../NewTask/NewTaskMenu'
+import NewTaskMenu from '../NewTask/NewTaskMenu'
 import NewDoTask from '../TaskComponents/ToDo/NewDoTask'
 import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
 import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
-import ToDoList from '../TaskComponents/ToDo/ToDoList'
 import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
+import ToReadTask from "../TaskComponents/ToRead/ToReadTask"
+import ToWatchTask from "../TaskComponents/ToWatch/ToWatchTask"
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 
@@ -79,7 +80,7 @@ class App extends Component {
           <Route
             path="/NewTask/"
             exact
-            render={props => <NewTaskList {...props} {...this.state} />}
+            render={props => <NewTaskMenu {...props} {...this.state} />}
           />
           <Route
             path="/NewToDo/"
@@ -97,14 +98,19 @@ class App extends Component {
             render={props => <NewReadTask {...props} {...this.state} />}
           />
           <Route
-            path="/ToWatch/"
-            exact
-            render={props => <ToDoList {...props} {...this.state} />}
-          />
-          <Route
-            path="/ToWatch/id/:task"
+            path="/todo/id/:id"
             exact
             render={props => <ToDoTask {...props} {...this.state} />}
+          />
+          <Route
+            path="/toread/id/:id"
+            exact
+            render={props => <ToReadTask {...props} {...this.state} />}
+          />
+          <Route
+            path="/towatch/id/:id"
+            exact
+            render={props => <ToWatchTask {...props} {...this.state} />}
           />
         </section>
       </div>
