@@ -72,12 +72,12 @@ class App extends Component {
             render={props => <NewReadTask {...props} {...this.state} />}
           />
           <Route
-            path="/ToDo/"
+            path="/ToWatch/"
             exact
             render={props => <ToDoList {...props} {...this.state} />}
           />
           <Route
-            path="/ToDo/:task"
+            path="/ToWatch/id/:task"
             exact
             render={props => <ToDoTask {...props} {...this.state} />}
           />
