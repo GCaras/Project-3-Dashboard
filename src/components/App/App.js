@@ -36,11 +36,7 @@ class App extends Component {
     this.setState({
         dateAndTime: dateBuf
     })
-  }
-
-
-  componentDidUpdate(){
-    // fetchTasks() {
+      
     fetch(taskURL+"index/"+this.state.dateAndTime, {
       method: "GET",
       headers: {
@@ -49,7 +45,7 @@ class App extends Component {
     })
       .then( response => response.json()
       .then( (parsedJson) => {
-        console.log(parsedJson)
+        this.setState({ tasks: parsedJson })
       }))
   }
 
