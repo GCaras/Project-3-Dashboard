@@ -9,7 +9,7 @@ const StyledHeader = styled.h1`
   align-items: center;
   display: flex;
   flex-direction: column;
- padding: 20px;
+  padding: 20px;
   justify-content: space-around;
   color: white;
 `
@@ -18,11 +18,11 @@ const StyledSearch = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
- padding: 20px;
+  padding: 20px;
   justify-content: space-around;
 `
 
-let abc = {};
+let newObjPost = {};
 
 export default class NewReadTask extends Component {
     constructor(props) {
@@ -30,7 +30,8 @@ export default class NewReadTask extends Component {
         this.state={
             searchText: null,
             searchResponse: [],
-            input: '',
+            descriptionInput: '',
+            dateAndTime: Date
         }
         this.onSearchChange=this.onSearchChange.bind(this)
         this.onEnter=this.onEnter.bind(this)
@@ -38,6 +39,8 @@ export default class NewReadTask extends Component {
         this.selectOne = this.selectOne.bind(this)
         this.onInputChange = this.onInputChange.bind(this)
         this.submitAction = this.submitAction.bind(this)
+        this.buildObject = this.buildObject.bind(this)
+        this.onDateChange = this.onDateChange.bind(this)
     
     }
     onSearchChange(value, evt) {
@@ -48,13 +51,13 @@ export default class NewReadTask extends Component {
     onInputChange(evt) {
         console.log(evt.target.value)
         this.setState({
-            input: evt.target.value
+            descriptionInput: evt.target.value
         })
     }
     afterSearch(res) {
         this.setState({
             searchResponse: res
-        }, console.log(this.state.searchResponse)) 
+        }) 
     }
 
     // Narrows search to one choice to add to the list
@@ -85,24 +88,39 @@ export default class NewReadTask extends Component {
         });
     }
     buildObject() {
-        abc.description = this.state.input;
-        // abc.thumbnail = this.state.searchResponse[0].thumbnail;
-        // abc.
+        newObjPost.title = this.state.searchResponse[0].volumeInfo.title
+        newObjPost.thumbnail = this.state.searchResponse[0].volumeInfo.imageLinks.thumbnail
+        newObjPost.description = this.state.descriptionInput
+        newObjPost.due = this.state.dateAndTime
+        console.log(newObjPost)
+    }
+
+    onDateChange(evt){
+        this.setState({
+            dateAndTime: evt._d
+        })
     }
 
     submitAction() {
+        this.buildObject()
         fetch("http://localhost:8081/toread/", {
             method: "POST",
             mode: 'cors',
-            body: JSON.stringify(),
+            body: JSON.stringify(newObjPost),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Connection": "keep-alive",
+                "Cache-Control": "no-cache",
+                "Accept": "*/*",
+                "Host": "https://todolist-sei32.herokuapp.com/"
             },
             
         }).then(res => console.log(res))
     }
 
     render() {
+
+        console.log(this.state.searchResponse)
         
        const listOfBooks = this.state.searchResponse.map(el => {
             return <ShowEachBook bookInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)}  />
@@ -111,7 +129,7 @@ export default class NewReadTask extends Component {
         return (
             <div style={newTaskStyles}>
                 <StyledHeader>Search For Your Book Title</StyledHeader>  
-                <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
+                <Datetime dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
                
                 <StyledSearch>
                 <SearchField 
