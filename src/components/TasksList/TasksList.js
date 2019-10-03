@@ -31,7 +31,7 @@ class TaskList extends Component {
 
     render() {
         const TaskList = this.props.tasks.map((task, i) => (
-            <Link to={`${task.type}/id/${task.task}`} key={i}>
+            <Link to={`${task.type}/id/${task._id}`} key={i}>
                 <li>{task}</li>
             </Link>
         ))

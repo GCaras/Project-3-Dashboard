@@ -14,8 +14,8 @@ import './App.css'
 let Datetime = require('react-datetime')
 
 
-// const taskURL = "https://todolist-sei32.herokuapp.com/";
-const taskURL = "http://localhost:8081/";
+const taskURL = "https://todolist-sei32.herokuapp.com/";
+// const taskURL = "http://localhost:8081/";
 
 
 class App extends Component {
@@ -47,8 +47,7 @@ class App extends Component {
   fetchTasks() {
     fetch(taskURL+"index", {
       // Must shorten by 10 characters
-      method: "POST",
-      body: this.state.dateAndTime
+      method: "GET",
     })
       .then( response => response.json()
       .then( (parsedJson) => {
@@ -69,7 +68,7 @@ class App extends Component {
           <Link to="/NewTask/">
             <h4 className="createTask ">Create New Task</h4>
           </Link>
-          <h2 className="motto"> Getting things done, when you want.</h2>
+          <h2 className="motto"> Getting things done,<br /> when you want.</h2>
         </nav>
         <section>
           <Route 
