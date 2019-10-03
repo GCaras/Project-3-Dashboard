@@ -3,24 +3,36 @@ import SearchField from "react-search-field";
 import ShowEachFilm from './ShowEachFilm';
 let Datetime = require('react-datetime');
 
-
+let newObjPost = {};
 
 export default class ToWatchList extends Component {
     constructor(props) {
         super(props)
         this.state={
             searchText: null,
-            searchResponse: []
+            searchResponse: [],
+            descriptionInput: '',
+            dateAndTime: Date
         }
-        this.onChange=this.onChange.bind(this)
+        this.onSearchChange=this.onSearchChange.bind(this)
         this.onEnter=this.onEnter.bind(this)
         this.afterSearch = this.afterSearch.bind(this)
         this.selectOne = this.selectOne.bind(this)
+        this.onInputChange = this.onInputChange.bind(this)
+        this.submitAction = this.submitAction.bind(this)
+        this.buildObject = this.buildObject.bind(this)
+        this.onDateChange = this.onDateChange.bind(this)
     
     }
-    onChange(value, evt) {
+    onSearchChange(value, evt) {
         this.setState({
             searchText: value
+        })
+    }
+    onInputChange(evt) {
+        console.log(evt.target.value)
+        this.setState({
+            descriptionInput: evt.target.value
         })
     }
     afterSearch(res) {
@@ -36,7 +48,7 @@ export default class ToWatchList extends Component {
        }) 
     }
 
-    onEnter(value, evt) {
+    onEnter() {
         
         const APIkey = '?apikey=cd212def&s='
         const movieURL = "http://www.omdbapi.com/";
@@ -48,6 +60,38 @@ export default class ToWatchList extends Component {
         .catch(err => {
           console.error(err);
         });
+    }
+
+    buildObject() {
+        newObjPost.Title = this.state.searchResponse[0].Title
+        newObjPost.Poster = this.state.searchResponse[0].Poster
+        newObjPost.description = this.state.descriptionInput
+        newObjPost.due = this.state.dateAndTime
+        newObjPost.type = 'towatch'
+        console.log(newObjPost)
+    }
+
+    onDateChange(evt){
+        this.setState({
+            dateAndTime: evt._d
+        })
+    }
+
+    submitAction() {
+        this.buildObject()
+        fetch("http://localhost:8081/towatch/", {
+            method: "POST",
+            mode: 'cors',
+            body: JSON.stringify(newObjPost),
+            headers: {
+                'Content-Type': 'application/json',
+                "Connection": "keep-alive",
+                "Cache-Control": "no-cache",
+                "Accept": "*/*",
+                "Host": "https://todolist-sei32.herokuapp.com/"
+            },
+            
+        }).then(res => console.log(res))
     }
 
     render() {
@@ -62,11 +106,12 @@ export default class ToWatchList extends Component {
   
                 <SearchField 
                 placeholder="Search"
-                onChange={(value, evt) => this.onChange(value, evt)}
-                onEnter={(value, evt) => this.onEnter(value, evt)}
+                onChange={(value, evt) => this.onSearchChange(value, evt)}
+                onEnter={() => this.onEnter()}
                 />
                 {listOfFilms}
-                <button style={buttonStyles} onClick={() => console.log("working")}>Submit</button>
+                <input onChange={(evt) => this.onInputChange(evt)} />
+                <button style={buttonStyles} onClick={() => this.submitAction()}>Submit</button>
             </div>
         )
     }
