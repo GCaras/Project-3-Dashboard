@@ -22,30 +22,39 @@ const StyledSearch = styled.div`
   justify-content: space-around;
 `
 
-
+let abc = {};
 
 export default class NewReadTask extends Component {
     constructor(props) {
         super(props)
         this.state={
             searchText: null,
-            searchResponse: []
+            searchResponse: [],
+            input: '',
         }
-        this.onChange=this.onChange.bind(this)
+        this.onSearchChange=this.onSearchChange.bind(this)
         this.onEnter=this.onEnter.bind(this)
         this.afterSearch = this.afterSearch.bind(this)
         this.selectOne = this.selectOne.bind(this)
+        this.onInputChange = this.onInputChange.bind(this)
+        this.submitAction = this.submitAction.bind(this)
     
     }
-    onChange(value, evt) {
+    onSearchChange(value, evt) {
         this.setState({
             searchText: value
+        })
+    }
+    onInputChange(evt) {
+        console.log(evt.target.value)
+        this.setState({
+            input: evt.target.value
         })
     }
     afterSearch(res) {
         this.setState({
             searchResponse: res
-        }) 
+        }, console.log(this.state.searchResponse)) 
     }
 
     // Narrows search to one choice to add to the list
@@ -63,9 +72,6 @@ export default class NewReadTask extends Component {
        
         fetch(url)
         .then(res => res.json())
-        // .then(res => {
-        //    this.afterSearch(res.items)
-        // })
         .then(response => {
             let resArray = []
             for(let i = 0; i < 10; i++){
@@ -78,8 +84,26 @@ export default class NewReadTask extends Component {
           console.error(err);
         });
     }
+    buildObject() {
+        abc.description = this.state.input;
+        // abc.thumbnail = this.state.searchResponse[0].thumbnail;
+        // abc.
+    }
+
+    submitAction() {
+        fetch("http://localhost:8081/toread/", {
+            method: "POST",
+            mode: 'cors',
+            body: JSON.stringify(),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            
+        }).then(res => console.log(res))
+    }
 
     render() {
+        
        const listOfBooks = this.state.searchResponse.map(el => {
             return <ShowEachBook bookInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)}  />
         })
@@ -92,12 +116,13 @@ export default class NewReadTask extends Component {
                 <StyledSearch>
                 <SearchField 
                 placeholder="Search"
-                onChange={(value, evt) => this.onChange(value, evt)}
+                onChange={(value, evt) => this.onSearchChange(value, evt)}
                 onEnter={(value, evt) => this.onEnter(value, evt)}
                 />
                 {listOfBooks}
                 </StyledSearch>
-                <button style={buttonStyles} onClick={() => console.log("working")}>Submit</button>
+                <input onChange={(evt) => this.onInputChange(evt)} />
+                <button style={buttonStyles} onClick={() => this.submitAction()}>Submit</button>
             </div>
         )
     }
