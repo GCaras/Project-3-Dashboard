@@ -15,11 +15,12 @@ const StyledModuleListItem = styled.article`
     border-radius: 25px;
     box-shadow: 5px 5px 5px yellow;
     color: white;
-    height: 100%;
     margin: 20px;
     margin-top: 125px;
-    padding: 50px;
     width: 275px;
+    margin-left: 250px;
+    padding: 50px;
+    position: absolute;
 `
 
 const StyledTaskListHeader = styled.h1`
