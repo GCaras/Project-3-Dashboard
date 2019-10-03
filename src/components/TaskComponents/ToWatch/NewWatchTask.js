@@ -102,7 +102,7 @@ export default class ToWatchList extends Component {
         return (
             <div style={newTaskStyles}>
                 <h1>Search For A Movie Title</h1>  
-                <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
+                <Datetime dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
   
                 <SearchField 
                 placeholder="Search"
