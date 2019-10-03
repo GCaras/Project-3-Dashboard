@@ -41,7 +41,7 @@ class App extends Component {
             <h1 className="logo">YouDue<span role="img">	&#x270F;&#xFE0F; </span></h1>
           </Link>
           <Link to="/NewTask/">
-            <h4 className="createTask">Create New Task</h4>
+            <h4 className="createTask ">Create New Task</h4>
           </Link>
           <h2 className="motto"> Getting things done, when you want.</h2>
         </nav>

@@ -1,4 +1,4 @@
-a {
+a  {
     color: black;
     text-decoration: none;
 }
@@ -10,7 +10,7 @@ body {
     height: 100vh;
 } 
 
-html{
+html {
     background: url("../src/photos/stickynotes.jpeg");
     height: 100%;
     margin: 0;
