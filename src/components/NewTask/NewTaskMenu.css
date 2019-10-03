@@ -1,0 +1,39 @@
+.boxImage1{
+    background-color:  rgba( 0,0,0,0.6);
+    border: solid 4px black;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px yellow;
+    color: white;
+    height: 100%;
+    margin: 20px;
+    margin-top: 125px;
+    padding: 50px;
+    width: 275px;
+}
+
+.boxImage2{
+    background-color:  rgba( 0,0,0,0.6);
+    border: solid 4px black;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px yellow;
+    color: white;
+    height: 100%;
+    margin: 20px;
+    margin-top: 125px;
+    padding: 50px;
+    width: 275px;
+}
+
+
+.boxImage3{
+    background-color:  rgba( 0,0,0,0.6);
+    border: solid 4px black;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px yellow;
+    color: white;
+    height: 100%;
+    margin: 20px;
+    margin-top: 125px;
+    padding: 50px;
+    width: 275px;
+}

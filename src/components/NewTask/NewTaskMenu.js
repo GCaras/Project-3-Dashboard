@@ -6,6 +6,7 @@ class NewTaskMenu extends Component {
     render() {
         return(
             <div>
+                <div className="wrapper">
                 <section>
                     <Link to="/NewToDo/">
                         <div className="boxImage1">
@@ -18,11 +19,12 @@ class NewTaskMenu extends Component {
                         </div>
                     </Link>
                     <Link to="/NewToWatch/">
-                    <div className="boxImage2">
+                    <div className="boxImage3">
                         <div>New Watch</div>
                         </div>
                     </Link>
                 </section>
+                </div>
             </div>
         )
     }

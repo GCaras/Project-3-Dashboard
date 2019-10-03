@@ -14,7 +14,7 @@ body {
   color: white;
   position: absolute;
   margin-left: 500px;
-  margin-top: -1.6px;
+  margin-top: -2px;
 }
 .createTask {
   padding: 10px;
@@ -27,7 +27,31 @@ body {
   margin-top: -73px;
 }
 
+.pickDate{
+position: absolute;
+margin-top: -25px;
+margin-left: 1000px;
+color: yellow;
+}
+.blinking{
+  animation:blinkingText 1.9s infinite;
+}
+@keyframes blinkingText{
+  0%{     color: yellow;    }
+  49%{    color: transparent; }
+  50%{    color: transparent; }
+  99%{    color:yellow;  }
+  100%{   color: yellow;    }
+}
 
+.dateTime{
+  position: absolute;
+  margin-left: 1000px;
+}
+
+.onTime{
+  margin-left: 5px;
+}
 
 .logo{
   color: white;
