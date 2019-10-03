@@ -33,35 +33,16 @@ class TaskList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            data: this.props
         }
-        this.ToDoTaskList = this.ToDoTaskList.bind(this)
-        this.ToWatchTaskList = this.ToWatchTaskList.bind(this)
-        this.ToReadTaskList = this.ToReadTaskList.bind(this)
     }
 
-    componentDidMount() {
-        this.ToDoTaskList();
-        this.ToWatchTaskList();
-        this.ToReadTaskList();
-    }
+    // componentDidMount() {
+    //     this.ToDoTaskList();
+    //     this.ToWatchTaskList();
+    //     this.ToReadTaskList();
+    // }
 
-    ToDoTaskList() {this.props.toDo.map((doTask) =>(
-        indexArray.push(doTask)
-        ))
-    }
-
-    ToWatchTaskList() {
-        this.props.toWatch.map((watchTask) =>(
-        indexArray.push(watchTask)
-        ))
-    }
-
-    ToReadTaskList() {
-        this.props.toRead.map((readTask) =>(
-        indexArray.push(readTask)
-        ))
-    }
 
     render() {
         const TaskList = indexArray.map((task, i) => (
