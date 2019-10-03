@@ -9,7 +9,7 @@ const StyledHeader = styled.h1`
   align-items: center;
   display: flex;
   flex-direction: column;
- padding: 20px;
+  padding: 20px;
   justify-content: space-around;
   color: white;
 `
@@ -18,28 +18,40 @@ const StyledSearch = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
- padding: 20px;
+  padding: 20px;
   justify-content: space-around;
 `
 
-
+let newObjPost = {};
 
 export default class NewReadTask extends Component {
     constructor(props) {
         super(props)
         this.state={
             searchText: null,
-            searchResponse: []
+            searchResponse: [],
+            descriptionInput: '',
+            dateAndTime: Date
         }
-        this.onChange=this.onChange.bind(this)
+        this.onSearchChange=this.onSearchChange.bind(this)
         this.onEnter=this.onEnter.bind(this)
         this.afterSearch = this.afterSearch.bind(this)
         this.selectOne = this.selectOne.bind(this)
+        this.onInputChange = this.onInputChange.bind(this)
+        this.submitAction = this.submitAction.bind(this)
+        this.buildObject = this.buildObject.bind(this)
+        this.onDateChange = this.onDateChange.bind(this)
     
     }
-    onChange(value, evt) {
+    onSearchChange(value, evt) {
         this.setState({
             searchText: value
+        })
+    }
+    onInputChange(evt) {
+        console.log(evt.target.value)
+        this.setState({
+            descriptionInput: evt.target.value
         })
     }
     afterSearch(res) {
@@ -63,9 +75,6 @@ export default class NewReadTask extends Component {
        
         fetch(url)
         .then(res => res.json())
-        // .then(res => {
-        //    this.afterSearch(res.items)
-        // })
         .then(response => {
             let resArray = []
             for(let i = 0; i < 10; i++){
@@ -78,8 +87,41 @@ export default class NewReadTask extends Component {
           console.error(err);
         });
     }
+    buildObject() {
+        newObjPost.title = this.state.searchResponse[0].volumeInfo.title
+        newObjPost.thumbnail = this.state.searchResponse[0].volumeInfo.imageLinks.thumbnail
+        newObjPost.description = this.state.descriptionInput
+        newObjPost.due = this.state.dateAndTime
+        console.log(newObjPost)
+    }
+
+    onDateChange(evt){
+        this.setState({
+            dateAndTime: evt._d
+        })
+    }
+
+    submitAction() {
+        this.buildObject()
+        fetch("http://localhost:8081/toread/", {
+            method: "POST",
+            mode: 'cors',
+            body: JSON.stringify(newObjPost),
+            headers: {
+                'Content-Type': 'application/json',
+                "Connection": "keep-alive",
+                "Cache-Control": "no-cache",
+                "Accept": "*/*",
+                "Host": "https://todolist-sei32.herokuapp.com/"
+            },
+            
+        }).then(res => console.log(res))
+    }
 
     render() {
+
+        console.log(this.state.searchResponse)
+        
        const listOfBooks = this.state.searchResponse.map(el => {
             return <ShowEachBook bookInfo={el} choice={(evt) => this.selectOne(evt.target.parentNode.innerText)}  />
         })
@@ -87,17 +129,18 @@ export default class NewReadTask extends Component {
         return (
             <div style={newTaskStyles}>
                 <StyledHeader>Search For Your Book Title</StyledHeader>  
-                <Datetime dateFormat={true} onChange={(evt)=> console.log(evt._d)} />
+                <Datetime dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
                
                 <StyledSearch>
                 <SearchField 
                 placeholder="Search"
-                onChange={(value, evt) => this.onChange(value, evt)}
+                onChange={(value, evt) => this.onSearchChange(value, evt)}
                 onEnter={(value, evt) => this.onEnter(value, evt)}
                 />
                 {listOfBooks}
                 </StyledSearch>
-                <button style={buttonStyles} onClick={() => console.log("working")}>Submit</button>
+                <input onChange={(evt) => this.onInputChange(evt)} />
+                <button style={buttonStyles} onClick={() => this.submitAction()}>Submit</button>
             </div>
         )
     }
