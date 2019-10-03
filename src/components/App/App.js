@@ -14,8 +14,8 @@ import './App.css'
 let Datetime = require('react-datetime')
 
 
-const taskURL = "https://todolist-sei32.herokuapp.com/";
-// const taskURL = "http://localhost:8081/";
+// const taskURL = "https://todolist-sei32.herokuapp.com/";
+const taskURL = "http://localhost:8081/";
 
 
 class App extends Component {
@@ -23,39 +23,34 @@ class App extends Component {
     super(props)
     this.state = {
       tasks: [],
-      dateAndTime: Date,
+      dateAndTime: null,
     }
     this.onDateChange = this.onDateChange.bind(this)
-    this.fetchTasks = this.fetchTasks.bind(this)
   }
 
   onDateChange(evt){
     let dateBuf = new Date(evt._d)
     dateBuf = JSON.stringify(dateBuf)
     dateBuf = dateBuf.slice(1,11)
-    console.log(dateBuf)
     
     this.setState({
         dateAndTime: dateBuf
     })
-    this.fetchTasks()
-  }
-  componentDidMount() {
-    this.fetchTasks();
   }
 
-  fetchTasks() {
+
+  componentDidUpdate(){
+    // fetchTasks() {
     fetch(taskURL+"index/"+this.state.dateAndTime, {
-      // Must shorten by 10 characters
       method: "GET",
     })
       .then( response => response.json()
       .then( (parsedJson) => {
-        this.setState({
-          tasks: parsedJson
-        })
+        console.log(parsedJson)
       }))
   }
+
+  
 
   render () {
     return (
