@@ -10,14 +10,15 @@ const StyledModuleList = styled.section`
 `
 
 const StyledModuleListItem = styled.article`
-    background-color: white;
-    border: solid 4px aqua;
+    background-color:  rgba( 0,0,0,0.6);
+    border: solid 4px black;
     border-radius: 25px;
-    box-shadow: 5px 5px 5px darkslategray;
+    box-shadow: 5px 5px 5px yellow;
     color: white;
     height: 100%;
-    margin: 5px;
-    padding: 5px;
+    margin: 20px;
+    margin-top: 125px;
+    padding: 50px;
     width: 275px;
 `
 
@@ -30,7 +31,7 @@ class TaskList extends Component {
 
     render() {
         const TaskList = this.props.tasks.map((task, i) => (
-            <Link to={`/todo/${task.task}`} key={i}>
+            <Link to={`${task.type}/id/${task._id}`} key={i}>
                 <li>{task}</li>
             </Link>
         ))
@@ -38,12 +39,10 @@ class TaskList extends Component {
             <div>
                 <StyledModuleList>
                     <StyledModuleListItem>
-                        <Link to="/ToWatch/">
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
                                 <ul>{TaskList}</ul>
                             </section>
-                        </Link>
                     </StyledModuleListItem>
                 </StyledModuleList>
             </div>

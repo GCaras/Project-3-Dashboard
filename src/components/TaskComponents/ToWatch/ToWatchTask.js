@@ -9,7 +9,9 @@ const StyledToDoImage = styled.img`
 
 const taskURL = "https://todolist-sei32.herokuapp.com";
 
-class ToDoTask extends Component {
+
+
+class ToWatchTask extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -55,4 +57,4 @@ class ToDoTask extends Component {
     }
 }
 
-export default ToDoTask
+export default ToWatchTask
