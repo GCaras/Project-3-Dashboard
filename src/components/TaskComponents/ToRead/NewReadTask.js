@@ -92,6 +92,7 @@ export default class NewReadTask extends Component {
         newObjPost.thumbnail = this.state.searchResponse[0].volumeInfo.imageLinks.thumbnail
         newObjPost.description = this.state.descriptionInput
         newObjPost.due = this.state.dateAndTime
+        newObjPost.type = 'toread'
         console.log(newObjPost)
     }
 
