@@ -46,7 +46,6 @@ class ToWatchTask extends Component {
                         <li>{toDoTask.url}</li>
                     </section>
                     <section>
-                        <button>Edit Task</button>
                         <Link to="/">
                             <button onClick={this.deleteDoTask}>Delete Task</button>
                         </Link>

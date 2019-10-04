@@ -13,7 +13,7 @@ class ToWatchTask extends Component {
     constructor(props){
         super(props)
         this.state = {
-          readTask: {},
+          readTask: [],
           readUrl: this.props.match.url
         }
         this.deleteDoTask = this.deleteDoTask.bind(this)
@@ -32,7 +32,7 @@ class ToWatchTask extends Component {
         .then( response => response.json()
         .then( (parsedJson) => {
           this.setState({
-            readTask: parsedJson
+            readTask: parsedJson[0]
           })
         }
         ))
@@ -51,18 +51,17 @@ class ToWatchTask extends Component {
         .catch(err => console.log(err));
     };
     render() {
-        const toReadTask = this.state.readTask;
+        // const toReadTask = this.state.readTask;
         console.log(this.state.readTask)
         return (
             <div>
                 <article>
-                    <StyledToDoImage src={toReadTask.thumbnail} alt={toReadTask.title}/>
+                    <StyledToDoImage src={this.state.readTask.thumbnail} alt={this.state.readTasktitle}/>
                     <section>
-                        <h2>{toReadTask.title}</h2>
-                        <li>{toReadTask.due}</li>
+                        <h2>{this.state.readTasktitle}</h2>
+                        <li>{this.state.readTaskdue}</li>
                     </section>
                     <section>
-                        <button>Edit Task</button>
                         <Link to="/">
                             <button onClick={this.deleteDoTask}>Delete Task</button>
                         </Link>
