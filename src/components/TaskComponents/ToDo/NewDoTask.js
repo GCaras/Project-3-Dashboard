@@ -20,9 +20,9 @@ export default class CreateNewTask extends Component {
 
     handleValueChange(evt) {
         const description = evt.target.description;
-        const value = evt.target.value;
+        // const value = evt.target.value;
         this.setState({
-            [description]: value
+            [description]: evt.target.value
         })
     }
 
@@ -51,21 +51,21 @@ export default class CreateNewTask extends Component {
                         name="description"
                         type="text"
                         placeholder="Description"
-                        value={this.state.description}
+                        // value={this.state.description}
                         onChange={this.handleValueChange}
                         />
                         <input 
                         name="due"
                         type="date"
                         placeholder="Due"
-                        value={this.state.due}
+                        // value={this.state.due}
                         onChange={this.handleValueChange}
                         />
                         <input 
                         name="url"
                         type="text"
                         placeholder="URL"
-                        value={this.state.url}
+                        // value={this.state.url}
                         onChange={this.handleValueChange}
                         />
                         <Link to={'/'}>
