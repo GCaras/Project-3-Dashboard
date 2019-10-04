@@ -9,17 +9,17 @@ class NewTaskMenu extends Component {
                 <div className="wrapper">
                 <section>
                     <Link to="/NewToDo/">
-                        <div className="boxImage1">
+                        <div className="boxImage">
                         <div>New Do</div>
                         </div>
                     </Link>
                     <Link to="/NewToRead/">
-                    <div className="boxImage2">
+                    <div className="boxImage">
                         <div>New Read</div>
                         </div>
                     </Link>
                     <Link to="/NewToWatch/">
-                    <div className="boxImage3">
+                    <div className="boxImage">
                         <div>New Watch</div>
                         </div>
                     </Link>

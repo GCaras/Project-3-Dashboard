@@ -60,15 +60,18 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar">
-        <Datetime className="dateTime" dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
+        
           <Link to="/">
             <h1 className="logo">YouDue<span role="img">	&#x270F;&#xFE0F; </span></h1>
           </Link>
+          <h2 className="motto"> Getting things done, <i className="onTime">on time.</i></h2>
           <Link to="/NewTask/">
             <h4 className="createTask ">Create New Task</h4>
           </Link>
-          <h2 className="motto"> Getting things done, <i className="onTime">on time.</i></h2>
-          <p className="pickDate blinking"> Pick a Date</p>
+          <section>
+            <p className="pickDate blinking"> Pick a Date</p>
+            <Datetime className="dateTime" dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
+          </section>
         </nav>
         <section>
           <Route 

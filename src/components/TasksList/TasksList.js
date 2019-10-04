@@ -16,7 +16,7 @@ const StyledModuleListItem = styled.article`
     box-shadow: 5px 5px 5px yellow;
     color: white;
     margin-top: 125px;
-    width: 400px;
+    width: 300px;
 `
 
 const StyledTaskListHeader = styled.h1`
@@ -29,6 +29,7 @@ const StyledTaskListItem = styled.div`
     font-size: 30px;
     text-align: center;
 `
+
 
 class TaskList extends Component {
 
