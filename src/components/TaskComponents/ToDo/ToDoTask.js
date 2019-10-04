@@ -17,7 +17,6 @@ class ToDoTask extends Component {
           doURL: this.props.match.url
         }
         this.deleteDoTask = this.deleteDoTask.bind(this)
-        console.log(this.props.match)
     }
 
     deleteDoTask() {

@@ -58,7 +58,7 @@ class TaskList extends Component {
                 </Link>
                 )
             );
-            console.log(listResults)
+            // console.log(listResults)
         return(
             <div>
                 <StyledModuleList>

@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
 const url = "https://todolist-sei32.herokuapp.com/todo/id/";
+// const url = "http://localhost:8081/todo/id/";
 
 export default class EditTask extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            description: '',
+            taskItem: '',
             due: null,
             url: '',
         }
@@ -18,17 +19,16 @@ export default class EditTask extends Component {
     handleValueChange(field, value) {
         this.setState({
             [field]: value
-        })
+        }, console.log(this.state))
     }
 
     updateTask() {
-        fetch(url + this.props.match.params._id, {
+        // console.log(this.props.tasks[0]._id)
+        fetch(url + this.props.tasks[0]._id, {
             method: "PUT",
             headers:{
                 "Content-Type": "application/json",
                 "Accept": "*/*",
-                "Cache-Control": "no-cache",
-                "Connection": "keep-alive"
             },
             body: JSON.stringify(this.state)
         }).then(res => console.log(res))
@@ -46,7 +46,7 @@ export default class EditTask extends Component {
                         name="description"
                         type="text"
                         placeholder="Description"
-                        onChange={evt => this.handleValueChange("description", evt.target.value)}
+                        onChange={evt => this.handleValueChange("taskItem", evt.target.value)}
                         />
                         <input 
                         name="due"
