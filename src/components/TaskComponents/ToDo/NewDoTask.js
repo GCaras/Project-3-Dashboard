@@ -1,53 +1,53 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const url = "https://todolist-sei32.herokuapp.com/";
+const pokeURL = "https://kanto-unown-01999.herokuapp.com/";
+//We should have the url in App.js and this url come from
+//the same source
 
-export default class EditPokeCard extends Component {
+export default class CreateNewTask extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            description: '',
-            due: null,
+            description:'',
+            due: '',
             url: '',
         }
         this.handleValueChange = this.handleValueChange.bind(this)
-        this.updateCard = this.updateCard.bind(this)
+        this.submitTask = this.submitTask.bind(this)
     }
 
     handleValueChange(evt) {
-        const due = evt.target.due;
+        const description = evt.target.description;
         const value = evt.target.value;
         this.setState({
             [description]: value
         })
     }
 
-    updateTask() {
-        fetch(url + this.props.match.params._id, {
-            method: "PUT",
-            headers:{
+    submitTask() {
+        fetch(pokeURL, {
+            method: "POST",
+            headers: {
                 "Content-Type": "application/json",
-                "Accept": "*/*",
+                "Connection": "keep-alive",
                 "Cache-Control": "no-cache",
-                "Host": "kanto-unown-01999.herokuapp.com",
-                "Connection": "keep-alive"
+                "Accept": "*/*",
+                "Host": "kanto-unown-01999.herokuapp.com"
             },
             body: JSON.stringify(this.state)
         }).then(res => console.log(res))
         .catch(err => console.log(err));
-        // this.props.location.state.fetchPokeCard()
-        //the line above is an attempt to make our pokecard re-fetch 
-        //it's pokecard
-    }
+}
 
     render() {
         return (
             <div>
                 <article>
-                    <header>Update Task</header>
+                    <h1>Create New Pokémon Card</h1>
                     <form>
-                    <input 
+                        <input 
                         name="description"
                         type="text"
                         placeholder="Description"
@@ -68,13 +68,13 @@ export default class EditPokeCard extends Component {
                         value={this.state.url}
                         onChange={this.handleValueChange}
                         />
-                        <Link to={`/`}>
-                            <button onClick={this.updateTask}>
-                                Submit
+                        <Link to={'/'}>
+                            <button onClick={this.submitTask}>
+                                Submit Card
                             </button>
                         </Link>
                     </form>
-                </article>    
+                </article>
             </div>
         )
     }

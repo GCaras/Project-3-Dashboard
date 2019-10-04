@@ -15,7 +15,7 @@ class ToWatchTask extends Component {
     constructor(props){
         super(props)
         this.state = {
-          doTask: this.props.task,
+          doTask: {},
           doURL: this.props.match.url
         }
         this.deleteDoTask = this.deleteDoTask.bind(this)
