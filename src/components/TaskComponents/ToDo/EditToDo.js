@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
-const url = "https://todolist-sei32.herokuapp.com/";
+const url = "https://todolist-sei32.herokuapp.com/todo/id/";
 
-export default class EditPokeCard extends Component {
+export default class EditTask extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -12,14 +12,12 @@ export default class EditPokeCard extends Component {
             url: '',
         }
         this.handleValueChange = this.handleValueChange.bind(this)
-        this.updateCard = this.updateCard.bind(this)
+        this.updateTask = this.updateTask.bind(this)
     }
 
-    handleValueChange(evt) {
-        const due = evt.target.due;
-        const value = evt.target.value;
+    handleValueChange(field, value) {
         this.setState({
-            [description]: value
+            [field]: value
         })
     }
 
@@ -30,15 +28,12 @@ export default class EditPokeCard extends Component {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
                 "Cache-Control": "no-cache",
-                "Host": "kanto-unown-01999.herokuapp.com",
                 "Connection": "keep-alive"
             },
             body: JSON.stringify(this.state)
         }).then(res => console.log(res))
         .catch(err => console.log(err));
-        // this.props.location.state.fetchPokeCard()
-        //the line above is an attempt to make our pokecard re-fetch 
-        //it's pokecard
+
     }
 
     render() {
@@ -46,34 +41,31 @@ export default class EditPokeCard extends Component {
             <div>
                 <article>
                     <header>Update Task</header>
-                    <form>
+
                     <input 
                         name="description"
                         type="text"
                         placeholder="Description"
-                        value={this.state.description}
-                        onChange={this.handleValueChange}
+                        onChange={evt => this.handleValueChange("description", evt.target.value)}
                         />
                         <input 
                         name="due"
                         type="date"
                         placeholder="Due"
-                        value={this.state.due}
-                        onChange={this.handleValueChange}
+                        onChange={evt => this.handleValueChange("due", evt.target.value)}
                         />
                         <input 
                         name="url"
                         type="text"
                         placeholder="URL"
-                        value={this.state.url}
-                        onChange={this.handleValueChange}
+                        onChange={evt => this.handleValueChange("url", evt.target.value)}
                         />
                         <Link to={`/`}>
                             <button onClick={this.updateTask}>
                                 Submit
                             </button>
                         </Link>
-                    </form>
+
                 </article>    
             </div>
         )
