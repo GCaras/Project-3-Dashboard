@@ -15,53 +15,65 @@ const StyledModuleListItem = styled.article`
     border-radius: 25px;
     box-shadow: 5px 5px 5px yellow;
     color: white;
-    margin: 20px;
     margin-top: 125px;
-    width: 275px;
-    margin-left: 450px;
-    padding: 50px;
-    position: absolute;
+    width: 400px;
 `
 
 const StyledTaskListHeader = styled.h1`
     font-size: 30px;
     text-align: center;
 `
-let list1
+
+const StyledTaskListItem = styled.ul`
+    color: white;
+    font-size: 30px;
+    text-align: center;
+`
+
+
 
 class TaskList extends Component {
 
     render() {
-
-        try {
-            list1 = this.props.taskState.tasks
-            return  list1.map((task, i) => (
+        const listResults = this.props.taskState.tasks
+            const doList = listResults.map((task, i) => (
+                <Link to={`${task.type}/id/${task._id}`} key={i}>
+                        <p>{task.taskItem}</p>
+                </Link>
+                )
+            );
+            const moviesList = listResults.map((task, i) => (
                     <Link to={`${task.type}/id/${task._id}`} key={i}>
                         <img alt={i} src={task.Poster} />
-                        <li>{task.Title}</li>
-                        {/* <img alt={i} src={task.volumeInfo.images.thumbnail} />
-                        <li>{task.volumeInfo.title}</li>
-                        <li>{task.description}</li> */}
+                        <p>{task.Title}</p>
 
                     </Link>
-                ))
-
-        }
-        catch(err){
-            console.log("not yet")
-        }
-        
-        // })
-        // console.log(TaskListItems)
-        
-
+                )
+            );
+            const readList = listResults.map((task, i) => (
+                <Link to={`${task.type}/id/${task._id}`} key={i}>
+                        <img alt={`${task.title}-image`} src={task.thumbnail} />
+                        <p>{task.title}</p>
+                        <p>{task.description}</p>
+                </Link>
+                )
+            );
+            console.log(listResults)
         return(
             <div>
                 <StyledModuleList>
                     <StyledModuleListItem>
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
-                                {/* <ul>{TaskListItems}</ul> */}
+                                <article>
+                                    <StyledTaskListItem>{moviesList}</StyledTaskListItem>
+                                </article>
+                                <article>
+                                    <StyledTaskListItem>{readList}</StyledTaskListItem>
+                                </article>
+                                <article>
+                                    <StyledTaskListItem>{doList}</StyledTaskListItem>
+                                </article>
                             </section>
                     </StyledModuleListItem>
                 </StyledModuleList>
