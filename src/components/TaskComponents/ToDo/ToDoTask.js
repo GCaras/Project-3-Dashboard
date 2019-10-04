@@ -37,14 +37,11 @@ class ToDoTask extends Component {
         return (
             <div>
                 <article>
-                    <StyledToDoImage src={toDoTask.image} alt={toDoTask.task}/>
                     <section>
-                        <h2>{toDoTask.task}</h2>
-                        <li>{toDoTask.due}</li>
-                        <li>{toDoTask.url}</li>
+                        <h2>{toDoTask.taskItem}</h2>
                     </section>
                     <section>
-                        <Link to="/todo/id/:id/edit">
+                        <Link to="/todo/edit/:id">
                         <button>Edit Task</button>
                         </Link>
                         <Link to="/">

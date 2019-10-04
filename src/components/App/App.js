@@ -8,6 +8,7 @@ import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
 import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
 import ToReadTask from "../TaskComponents/ToRead/ToReadTask"
 import ToWatchTask from "../TaskComponents/ToWatch/ToWatchTask"
+import EditTask from "../TaskComponents/ToDo/EditToDo"
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 
@@ -109,6 +110,11 @@ class App extends Component {
             path="/towatch/id/:id"
             exact
             render={props => <ToWatchTask {...props} {...this.state} />}
+          />
+          <Route
+            path="/todo/edit/:id"
+            exact
+            render={props => <EditTask {...props} {...this.state} />}
           />
         </section>
       </div>
