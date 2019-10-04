@@ -24,13 +24,11 @@ const StyledTaskListHeader = styled.h1`
     text-align: center;
 `
 
-const StyledTaskListItem = styled.ul`
+const StyledTaskListItem = styled.div`
     color: white;
     font-size: 30px;
     text-align: center;
 `
-
-
 
 class TaskList extends Component {
 
@@ -39,22 +37,11 @@ class TaskList extends Component {
             const doList = listResults.map((task, i) => (
                 <Link to={`${task.type}/id/${task._id}`} key={i}>
                         <p>{task.taskItem}</p>
-                </Link>
-                )
-            );
-            const moviesList = listResults.map((task, i) => (
-                    <Link to={`${task.type}/id/${task._id}`} key={i}>
-                        <img alt={i} src={task.Poster} />
-                        <p>{task.Title}</p>
-
-                    </Link>
-                )
-            );
-            const readList = listResults.map((task, i) => (
-                <Link to={`${task.type}/id/${task._id}`} key={i}>
-                        <img alt={`${task.title}-image`} src={task.thumbnail} />
+                        <img alt={null} src={task.thumbnail} />
                         <p>{task.title}</p>
                         <p>{task.description}</p>
+                        <img alt={null} src={task.Poster} />
+                        <p>{task.Title}</p>
                 </Link>
                 )
             );
@@ -65,12 +52,6 @@ class TaskList extends Component {
                     <StyledModuleListItem>
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
-                                <article>
-                                    <StyledTaskListItem>{moviesList}</StyledTaskListItem>
-                                </article>
-                                <article>
-                                    <StyledTaskListItem>{readList}</StyledTaskListItem>
-                                </article>
                                 <article>
                                     <StyledTaskListItem>{doList}</StyledTaskListItem>
                                 </article>

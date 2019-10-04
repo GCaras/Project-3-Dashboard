@@ -5,7 +5,7 @@ import NewTaskMenu from '../NewTask/NewTaskMenu'
 import NewDoTask from '../TaskComponents/ToDo/NewDoTask'
 import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
 import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
-import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
+// import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
 import ToReadTask from "../TaskComponents/ToRead/ToReadTask"
 import ToWatchTask from "../TaskComponents/ToWatch/ToWatchTask"
 import EditTask from "../TaskComponents/ToDo/EditToDo"
@@ -96,11 +96,11 @@ class App extends Component {
             exact
             render={props => <NewReadTask {...props} {...this.state} />}
           />
-          <Route
+          {/* <Route
             path="/todo/id/:id"
             exact
             render={props => <ToDoTask {...props} {...this.state} />}
-          />
+          /> */}
           <Route
             path="/toread/id/:id"
             exact
@@ -112,7 +112,7 @@ class App extends Component {
             render={props => <ToWatchTask {...props} {...this.state} />}
           />
           <Route
-            path="/todo/edit/:id"
+            path="/todo/id/:id"
             exact
             render={props => <EditTask {...props} {...this.state} />}
           />

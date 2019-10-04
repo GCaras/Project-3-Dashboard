@@ -1,40 +1,42 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
-const url = "https://todolist-sei32.herokuapp.com/todo/id/";
+
+const url = "https://todolist-sei32.herokuapp.com";
 
 export default class EditTask extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            description: '',
+            taskItem: '',
             due: null,
             url: '',
         }
         this.handleValueChange = this.handleValueChange.bind(this)
         this.updateTask = this.updateTask.bind(this)
-    }
+    } 
 
     handleValueChange(field, value) {
         this.setState({
             [field]: value
         })
+        console.log(this.state)
     }
 
     updateTask() {
-        fetch(url + this.props.match.params._id, {
+        fetch(url + this.props.match.url, {
             method: "PUT",
             headers:{
+                "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
                 "Accept": "*/*",
                 "Cache-Control": "no-cache",
                 "Connection": "keep-alive"
             },
             body: JSON.stringify(this.state)
-        }).then(res => console.log(res))
-        .catch(err => console.log(err));
-
-    }
+        }).then(res => console.log(res));
+        console.log(this.state.taskItem)
+    };
 
     render() {
         return (
@@ -43,10 +45,10 @@ export default class EditTask extends Component {
                     <header>Update Task</header>
 
                     <input 
-                        name="description"
+                        name="taskItem"
                         type="text"
-                        placeholder="Description"
-                        onChange={evt => this.handleValueChange("description", evt.target.value)}
+                        placeholder="taskItem"
+                        onChange={evt => this.handleValueChange("taskItem", evt.target.value)}
                         />
                         <input 
                         name="due"

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const taskURL = "https://todolist-sei32.herokuapp.com/todo/";
@@ -8,7 +7,7 @@ export default class CreateNewTask extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            description:'',
+            taskItem:'',
             due: '',
             url: '',
             type: 'todo'
@@ -47,10 +46,10 @@ export default class CreateNewTask extends Component {
                     <h1>Create New Task</h1>
                     <form>
                         <input 
-                        name="description"
+                        name="taskItem"
                         type="text"
                         placeholder="Description"
-                        onChange={evt => this.handleValueChange("description", evt.target.value)}
+                        onChange={evt => this.handleValueChange("taskItem", evt.target.value)}
                         />
                         <input 
                         name="due"
