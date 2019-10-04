@@ -44,7 +44,9 @@ class ToDoTask extends Component {
                         <li>{toDoTask.url}</li>
                     </section>
                     <section>
+                        <Link to="/todo/id/:id/edit">
                         <button>Edit Task</button>
+                        </Link>
                         <Link to="/">
                             <button onClick={this.deleteDoTask}>Delete Task</button>
                         </Link>
