@@ -65,7 +65,7 @@ export default class CreateNewTask extends Component {
                         />
                         <Link to={'/'}>
                             <button onClick={this.submitTask}>
-                                Submit Card
+                                Submit
                             </button>
                         </Link>
                     </form>
