@@ -36,17 +36,21 @@ class App extends Component {
     this.setState({
         dateAndTime: dateBuf
     })
-      
-    fetch(taskURL+"index/"+this.state.dateAndTime, {
-      method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
+      if(this.state.dateAndTime) {
+      fetch(taskURL+"index/"+this.state.dateAndTime, {
+        method: "GET",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
+      })
+        .then( response => response.json()
+        .then( (parsedJson) => {
+          this.setState({ tasks: parsedJson })
+        }))
+      } else {
+        return
       }
-    })
-      .then( response => response.json()
-      .then( (parsedJson) => {
-        this.setState({ tasks: parsedJson })
-      }))
+
   }
 
   
@@ -69,7 +73,7 @@ class App extends Component {
           <Route 
             path="/"
             exact
-            render={props => <TaskList {...props} {...this.state} />}
+            render={() => <TaskList taskState={this.state} />}
           />
           <Route
             path="/NewTask/"

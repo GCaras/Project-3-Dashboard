@@ -27,23 +27,41 @@ const StyledTaskListHeader = styled.h1`
     font-size: 30px;
     text-align: center;
 `
+let list1
 
 class TaskList extends Component {
 
     render() {
-        const TaskListItems = this.props.tasks.map((task, i) => (
-            <Link to={`${task.type}/id/${task._id}`} key={i}>
-                <img alt={i} src={task[0][0].Poster} />
-                <li>{task[0][0].Title}</li>
-            </Link>
-        ))
+
+        try {
+            list1 = this.props.taskState.tasks
+            return  list1.map((task, i) => (
+                    <Link to={`${task.type}/id/${task._id}`} key={i}>
+                        <img alt={i} src={task.Poster} />
+                        <li>{task.Title}</li>
+                        {/* <img alt={i} src={task.volumeInfo.images.thumbnail} />
+                        <li>{task.volumeInfo.title}</li>
+                        <li>{task.description}</li> */}
+
+                    </Link>
+                ))
+
+        }
+        catch(err){
+            console.log("not yet")
+        }
+        
+        // })
+        // console.log(TaskListItems)
+        
+
         return(
             <div>
                 <StyledModuleList>
                     <StyledModuleListItem>
                             <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
                             <section>
-                                <ul>{TaskListItems}</ul>
+                                {/* <ul>{TaskListItems}</ul> */}
                             </section>
                     </StyledModuleListItem>
                 </StyledModuleList>
