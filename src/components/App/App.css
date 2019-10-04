@@ -1,3 +1,10 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .createTask {
   padding: 2px;
@@ -37,7 +44,6 @@ color: yellow;
   color: white;
   font-family: 'Righteous', cursive;
 font-size: 30px;
-margin-left: 200px;
 }
 
 

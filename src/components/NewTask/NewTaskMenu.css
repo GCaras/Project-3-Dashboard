@@ -1,42 +1,15 @@
-.boxImage1{
+.boxImage{
     background-color:  rgba( 0,0,0,0.6);
     border: solid 4px black;
     border-radius: 25px;
     box-shadow: 5px 5px 5px yellow;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
     margin: 20px;
     margin-top: 125px;
     width: 275px;
-    margin-left: 410px;
-    padding: 50px;
-    position: absolute;
 }
 
-.boxImage2{
-    background-color:  rgba( 0,0,0,0.6);
-    border: solid 4px black;
-    border-radius: 25px;
-    box-shadow: 5px 5px 5px yellow;
-    color: white;
-    margin: 20px;
-    margin-top: 425px;
-    width: 275px;
-    margin-left: 410px;
-    padding: 50px;
-    position: absolute;
-}
-
-
-.boxImage3{
-    background-color:  rgba( 0,0,0,0.6);
-    border: solid 4px black;
-    border-radius: 25px;
-    box-shadow: 5px 5px 5px yellow;
-    color: white;
-    margin: 20px;
-    margin-top: 725px;
-    width: 275px;
-    margin-left: 410px;
-    padding: 50px;
-    position: absolute;
-}
