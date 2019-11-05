@@ -69,7 +69,7 @@ export default class NewReadTask extends Component {
 
     onEnter(value, evt) {
         
-        const APIkey = '&key=AIzaSyDlLQvTxUGYnqHAfApV_W4iXcif3xYDdSg'
+        const APIkey = '&key=AIzaSyD5tsK6CR7eAgHDP8UYHk7CPIBevw6sRUk'
         const GoogleURL = "https://www.googleapis.com/books/v1/volumes?q=+intitle:";
         const url = `${GoogleURL}${this.state.searchText}${APIkey}`;
        
