@@ -51,7 +51,7 @@ class TaskList extends Component {
             <div>
                 <StyledModuleList>
                     <StyledModuleListItem>
-                            <StyledTaskListHeader>{"To-Do List"}</StyledTaskListHeader>
+                            <StyledTaskListHeader>{"Task List"}</StyledTaskListHeader>
                             <section>
                                 <article>
                                     <StyledTaskListItem>{doList}</StyledTaskListItem>
