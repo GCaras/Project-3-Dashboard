@@ -6,6 +6,9 @@ const StyledModuleList = styled.section`
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
+    @media (max-width: 400px) {
+        padding: 10px;
+    }
 `
 
 const StyledTask = styled.section`
@@ -25,6 +28,11 @@ const StyledTask = styled.section`
     padding: 40px 20px;
     text-shadow: 2px 2px black;
     width: 350px;
+    @media (max-width: 400px){
+        width: 250px;
+        height: 250px;
+        margin: 20px 0px;
+    }
 `
 
 const StyledTaskListHeader = styled.h1`
@@ -33,6 +41,9 @@ const StyledTaskListHeader = styled.h1`
     margin: 5px 0px;
     text-align: center;
     text-shadow: 2px 2px black;
+    @media (max-width: 400px){
+        font-size: 30px;
+    }
 `
 
 const TaskListItemContainer = styled.section`

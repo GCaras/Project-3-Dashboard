@@ -28,6 +28,7 @@ const NewDoTaskForm = styled.form`
 const FormHeader = styled.h1`
     color: white;
     font-size: 30px;
+    text-align: center;
     text-shadow: 2px 2px black;
 `
 

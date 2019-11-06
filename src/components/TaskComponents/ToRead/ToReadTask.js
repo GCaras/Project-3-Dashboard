@@ -23,6 +23,11 @@ const StyledReadArticle = styled.article`
     padding: 10px 20px;
     text-shadow: 2px 2px white;
     width: 350px;
+    @media (max-width: 400px){
+        width: 260px;
+        height: 300px;
+        margin: 20px 0px;
+    }
 `
 
 const TaskItemHeader = styled.h2`
@@ -30,6 +35,9 @@ const TaskItemHeader = styled.h2`
     margin: 5px 0px;
     text-align: center;
     text-shadow: 1px 1px white;
+    @media (max-width: 400px){
+        font-size: 24px;
+    }
 `
 
 const TaskItemDetails = styled.p`

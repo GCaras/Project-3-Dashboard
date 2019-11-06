@@ -18,9 +18,12 @@ const NewDoTaskForm = styled.form`
     border: solid 2px #FFFF9D;
     border-radius: 25px;
     color: white;
-    margin-top: 125px;
+    margin: 125px 0px;
     padding: 10px;
     width: 300px;
+    @media (max-width: 400px) {
+        width: 280px;
+    }
 `
 
 const FormHeader = styled.h1`
