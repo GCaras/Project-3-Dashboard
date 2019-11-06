@@ -1,14 +1,16 @@
 .boxImage{
     background-color:  rgba( 0,0,0,0.6);
-    border: solid 4px black;
-    border-radius: 25px;
-    box-shadow: 5px 5px 5px yellow;
+    border: solid 2px #FFFF9D;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
+    height: 30px;
     margin: 20px;
-    width: 275px;
-    padding: 50px;
+    width: 100px;
+    padding: 20px;
+}
+
+.newButtonContainer {
+    display: flex;
 }

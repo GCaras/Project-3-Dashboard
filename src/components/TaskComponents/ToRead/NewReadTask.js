@@ -5,21 +5,51 @@ import styled from 'styled-components';
 let Datetime = require('react-datetime');
 
 
-const StyledHeader = styled.h1`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  justify-content: space-around;
-  color: white;
+const DoTaskContainer = styled.article`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `
 
-const StyledSearch = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  justify-content: space-around;
+const NewDoTaskForm = styled.form`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:  rgba( 0,0,0,0.6);
+    border: solid 2px #FFFF9D;
+    color: white;
+    margin-top: 125px;
+    padding: 10px;
+    width: 80vw;
+`
+
+const FormHeader = styled.h1`
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px black;
+`
+
+const NewDoLabel = styled.label`
+    color: #FFFF9D;
+    font-size: 20px;
+    margin: 20px;
+    text-shadow: 2px 2px black;
+`
+
+const NewDoButton = styled.div`
+    align-items: center;
+    background-color: #2F4562;
+    border: 1px solid #FFFF9D;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    width: 100px;
 `
 
 let newObjPost = {};
@@ -128,20 +158,24 @@ export default class NewReadTask extends Component {
         })
         var date = new Date();
         return (
-            <div style={newTaskStyles}>
-                <StyledHeader>Search For Your Book Title</StyledHeader>  
-                <Datetime dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
-               
-                <StyledSearch>
-                <SearchField 
-                placeholder="Search"
-                onChange={(value, evt) => this.onSearchChange(value, evt)}
-                onEnter={(value, evt) => this.onEnter(value, evt)}
-                />
-                {listOfBooks}
-                </StyledSearch>
-                <input onChange={(evt) => this.onInputChange(evt)} />
-                <button style={buttonStyles} onClick={() => this.submitAction()}>Submit</button>
+            <div>
+                <DoTaskContainer>
+                    <NewDoTaskForm>
+                        <FormHeader>Search For Your Book</FormHeader>
+                        <NewDoLabel>Pick a date:</NewDoLabel>
+                        <Datetime dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
+                        <NewDoLabel>Search books:</NewDoLabel>
+                        <SearchField 
+                        placeholder="Search"
+                        onChange={(value, evt) => this.onSearchChange(value, evt)}
+                        onEnter={(value, evt) => this.onEnter(value, evt)}
+                        />
+                        {listOfBooks}
+                        <NewDoLabel>Notes:</NewDoLabel>
+                        <input onChange={(evt) => this.onInputChange(evt)} />
+                        <NewDoButton style={buttonStyles} onClick={() => this.submitAction()}>Submit</NewDoButton>
+                    </NewDoTaskForm>
+                </DoTaskContainer>
             </div>
         )
     }

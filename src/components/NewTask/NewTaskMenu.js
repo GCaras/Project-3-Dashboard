@@ -7,25 +7,17 @@ class NewTaskMenu extends Component {
     render() {
         return(
             <div>
-                <div className="wrapper">
-                <section>
+                <section className="newButtonContainer">
                     <Link to="/NewToDo/">
-                        <div className="boxImage">
-                        <div>New Do</div>
-                        </div>
+                        <div className="boxImage">New Do</div>
                     </Link>
                     <Link to="/NewToRead/">
-                    <div className="boxImage">
-                        <div>New Read</div>
-                        </div>
+                        <div className="boxImage">New Read</div>
                     </Link>
                     <Link to="/NewToWatch/">
-                    <div className="boxImage">
-                        <div>New Watch</div>
-                        </div>
+                        <div className="boxImage">New Watch</div>
                     </Link>
                 </section>
-                </div>
             </div>
         )
     }

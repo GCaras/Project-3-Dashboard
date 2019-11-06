@@ -5,7 +5,7 @@ import NewTaskMenu from '../NewTask/NewTaskMenu'
 import NewDoTask from '../TaskComponents/ToDo/NewDoTask'
 import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
 import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
-// import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
+import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
 import ToReadTask from "../TaskComponents/ToRead/ToReadTask"
 import ToWatchTask from "../TaskComponents/ToWatch/ToWatchTask"
 import EditTask from "../TaskComponents/ToDo/EditToDo"
@@ -60,19 +60,18 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar">
-        
           <Link to="/">
-            <h1 className="logo">YouDue<span role="img">	&#x270F;&#xFE0F; </span></h1>
+            <h1 className="logo">YouDue<span role="img">&#x270F;&#xFE0F;</span></h1>
           </Link>
+          <section>
+            <p className="pickDate blinking">Double-Click A Date</p>
+            <Datetime className="dateTime" dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
+          </section>
           <Link to="/NewTask/">
             <h4 className="createTask ">Create New Task</h4>
           </Link>
         </nav>
         <section>
-          <section>
-            <p className="pickDate blinking"> Pick a Date</p>
-            <Datetime className="dateTime" dateFormat={true} onChange={(evt)=> this.onDateChange(evt)} />
-          </section>
           <Route 
             path="/"
             exact
@@ -98,11 +97,11 @@ class App extends Component {
             exact
             render={props => <NewReadTask {...props} {...this.state} />}
           />
-          {/* <Route
+          <Route
             path="/todo/id/:id"
             exact
             render={props => <ToDoTask {...props} {...this.state} />}
-          /> */}
+          />
           <Route
             path="/toread/id/:id"
             exact
@@ -112,11 +111,6 @@ class App extends Component {
             path="/towatch/id/:id"
             exact
             render={props => <ToWatchTask {...props} {...this.state} />}
-          />
-          <Route
-            path="/todo/id/:id"
-            exact
-            render={props => <EditTask {...props} {...this.state} />}
           />
         </section>
       </div>

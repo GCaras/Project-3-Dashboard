@@ -50,13 +50,14 @@ export default class ToWatchList extends Component {
 
     onEnter() {
         
-        const APIkey = '?apikey=AIzaSyD5tsK6CR7eAgHDP8UYHk7CPIBevw6sRUk'
+        const APIkey = '?apikey=8cfb5100'
         const movieURL = "http://www.omdbapi.com/";
-        const url = `${movieURL}${APIkey}${this.state.searchText}`;
+        const url = `${movieURL}${this.state.searchText}${APIkey}`;
        
         fetch(url)
         .then(res => res.json())
-        .then(res => this.afterSearch(res.Search))
+        .then(res => console.log(res))
+        // .then(res => this.afterSearch(res.Search))
         .catch(err => {
           console.error(err);
         });

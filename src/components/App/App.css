@@ -1,15 +1,11 @@
-body {
-  min-height: 1400px;
-}
-
 .navbar{
   background-color: rgba(0,0,0,0.5);
+  border-bottom: 2px solid #FFFF9D;
   align-items: center;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  justify-content: space-around;
+  padding: 10px 0px;
+  justify-content: space-evenly;
 }
 .motto{
   color: white;
@@ -17,28 +13,21 @@ body {
 }
 
 .createTask {
-  padding: 2px;
-  background-color: yellow;
-  width: 100px;
-  border: 3px solid black;
+  padding: 5px;
+  background-color: #2F4562;
+  border: 1px solid #FFFF9D;
+  text-shadow: 2px 2px black;
   text-align: center;
+  width: 100px;
 }
 
 .pickDate{
-width: 100px;
+width: 200px;
 text-align: center;
-color: yellow;
+color: #FFFF9D;
 }
-.blinking{
-  animation:blinkingText 1.9s infinite;
-}
-@keyframes blinkingText{
-  0%{     color: yellow;    }
-  49%{    color: transparent; }
-  50%{    color: transparent; }
-  99%{    color:yellow;  }
-  100%{   color: yellow;    }
-}
+
+
 
 section{
   align-items: center;
@@ -48,7 +37,7 @@ section{
 }
 
 .onTime{
-  color: yellow;
+  color: #FFFF9D;
   font-size: 25px;
 }
 
@@ -56,6 +45,7 @@ section{
   color: white;
   font-family: 'Righteous', cursive;
 font-size: 30px;
+text-shadow: 2px 0px 2px black;
 }
 
 

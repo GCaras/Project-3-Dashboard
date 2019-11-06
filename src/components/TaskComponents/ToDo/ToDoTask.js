@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-const StyledToDoImage = styled.img`
-    height: auto;
-    width: 200px;
-`
 
 const taskURL = "https://todolist-sei32.herokuapp.com";
 

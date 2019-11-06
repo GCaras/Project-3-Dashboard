@@ -1,13 +1,12 @@
 a  {
-    color: rgb(179, 179, 179);
+    color: white;
     text-decoration: none;
-    text-shadow: 2px 2px black;
 }
 
 body {
     background-color : #2F4562;
     margin: 0;
-    font-family: 'Righteous', cursive;
+    font-family: sans-serif;
     height: 100vh;
 } 
 
