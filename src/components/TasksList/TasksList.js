@@ -12,8 +12,8 @@ const StyledTask = styled.section`
     background: rgb(255,255,157);
     background: linear-gradient(135deg, 
                 rgba(255,255,157,1) 0%, 
-                rgba(153,153,65,1) 74%, 
-                rgba(117,117,29,1) 94%, 
+                rgba(153,153,65,1) 78%, 
+                rgba(117,117,29,1) 93%, 
                 rgba(94,94,11,1) 100%);
     background-size: cover;
     border: solid 2px black;

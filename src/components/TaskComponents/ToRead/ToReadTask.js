@@ -7,8 +7,8 @@ const StyledReadArticle = styled.article`
     background: rgb(255,255,157);
     background: linear-gradient(135deg, 
                 rgba(255,255,157,1) 0%, 
-                rgba(153,153,65,1) 74%, 
-                rgba(117,117,29,1) 94%, 
+                rgba(153,153,65,1) 78%, 
+                rgba(117,117,29,1) 93%, 
                 rgba(94,94,11,1) 100%);
     background-size: cover;
     border: solid 2px black;
@@ -18,8 +18,9 @@ const StyledReadArticle = styled.article`
     flex-direction: column;
     font-size: 16px;
     height: 350px;
+    justify-content: center;
     margin: 20px;
-    padding: 20px 20px;
+    padding: 10px 20px;
     text-shadow: 2px 2px white;
     width: 350px;
 `
@@ -45,6 +46,16 @@ const StyledToDoImage = styled.img`
     max-width: 200px;
 `
 
+const NewReadButton = styled.div`
+    background-color: #172231;
+    border: 3px solid #2E4562;
+    /* box-shadow: 0px 0px 5px yellow; */
+    padding: 5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    width: 100px;
+`
+
 const taskUrl = "https://todolist-sei32.herokuapp.com";
 
 class ToWatchTask extends Component {
@@ -54,9 +65,8 @@ class ToWatchTask extends Component {
           readTask: [],
           readUrl: this.props.match.url
         }
-        this.deleteDoTask = this.deleteDoTask.bind(this)
+        this.deleteDoTask = this.deleteReadTask.bind(this)
         this.fetchReadTask = this.fetchReadTask.bind(this)
-        console.log(this.props.match)
     }
 
     componentDidMount() {
@@ -76,7 +86,7 @@ class ToWatchTask extends Component {
         ))
     }
 
-    deleteDoTask() {
+    deleteReadTask() {
         fetch(taskUrl + this.state.readUrl, {
             method: "DELETE",
             headers: {
@@ -101,7 +111,7 @@ class ToWatchTask extends Component {
                     </section>
                     <section>
                         <Link to="/">
-                            <button onClick={this.deleteDoTask}>Delete Task</button>
+                            <NewReadButton onClick={this.deleteReadTask}>Delete Task</NewReadButton>
                         </Link>
                     </section>
                 </StyledReadArticle>

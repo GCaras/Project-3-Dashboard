@@ -3,12 +3,11 @@ import React, { Component } from 'react'
 import TaskList from '../TasksList/TasksList'
 import NewTaskMenu from '../NewTask/NewTaskMenu'
 import NewDoTask from '../TaskComponents/ToDo/NewDoTask'
-import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
+// import NewWatchTask from '../TaskComponents/ToWatch/NewWatchTask'
 import NewReadTask from '../TaskComponents/ToRead/NewReadTask'
 import ToDoTask from "../TaskComponents/ToDo/ToDoTask"
 import ToReadTask from "../TaskComponents/ToRead/ToReadTask"
-import ToWatchTask from "../TaskComponents/ToWatch/ToWatchTask"
-import EditTask from "../TaskComponents/ToDo/EditToDo"
+// import ToWatchTask from "../TaskComponents/ToWatch/ToWatchTask"
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 
@@ -54,8 +53,6 @@ class App extends Component {
 
   }
 
-  
-
   render () {
     return (
       <div>
@@ -87,11 +84,11 @@ class App extends Component {
             exact
             render={props => <NewDoTask {...props} {...this.state} />}
           />
-          <Route
+          {/* <Route
             path="/NewToWatch/"
             exact
             render={props => <NewWatchTask {...props} {...this.state} />}
-          />
+          /> */}
           <Route
             path="/NewToRead/"
             exact
@@ -106,11 +103,6 @@ class App extends Component {
             path="/toread/id/:id"
             exact
             render={props => <ToReadTask {...props} {...this.state} />}
-          />
-          <Route
-            path="/towatch/id/:id"
-            exact
-            render={props => <ToWatchTask {...props} {...this.state} />}
           />
         </section>
       </div>
