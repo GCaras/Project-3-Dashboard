@@ -14,9 +14,9 @@ class NewTaskMenu extends Component {
                     <Link to="/NewToRead/">
                         <div className="boxImage">New Read</div>
                     </Link>
-                    <Link to="/NewToWatch/">
+                    {/* <Link to="/NewToWatch/">
                         <div className="boxImage">New Watch</div>
-                    </Link>
+                    </Link> */}
                 </section>
             </div>
         )
